@@ -222,7 +222,7 @@ export let SDEX_ADDRS = {
 
 export let POOL_IDXS = {
     '0x6f': 36000, // BOB testnet
-    '0xed88': 420, // BOB mainnet
+    '0xed88': 400, // BOB mainnet
     '0xaa36a7': 36000, // sepolia
     '0x7a69': 36000, // hh local fork
 }
