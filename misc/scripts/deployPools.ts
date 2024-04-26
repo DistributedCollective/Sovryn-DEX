@@ -186,11 +186,17 @@ async function deployPools() {
         let conduit: SdexLpErc20;
 
         if(compareAddresses(baseToken.tokenAddress, quoteToken.tokenAddress) > 0) {
-            /** Means the base token > quote token */
-            param = [71, quoteToken.tokenAddress, baseToken.tokenAddress, poolConfig.poolIdx, toSqrtPrice(poolConfig.initialRate)]
+            /** Means the base token > quote token, which need to be inverted */
+            const baseTokenDecimal = baseToken.isNativeToken ? 18 : await baseTokenContract.decimals()
+            const quoteTokenDecimal = quoteToken.isNativeToken ? 18 : await quoteTokenContract.decimals()
+            const price = poolConfig.initialRate * Math.pow(10, quoteTokenDecimal - baseTokenDecimal)
+            param = [71, quoteToken.tokenAddress, baseToken.tokenAddress, poolConfig.poolIdx, toSqrtPrice(price)]
         } else {
-            /** Means the base token < sov token */
-            param = [71, baseToken.tokenAddress, quoteToken.tokenAddress, poolConfig.poolIdx, toSqrtPrice(1/poolConfig.initialRate)]
+            /** Means the base token < quote token */
+            const baseTokenDecimal = baseToken.isNativeToken ? 18 : await baseTokenContract.decimals()
+            const quoteTokenDecimal = quoteToken.isNativeToken ? 18 : await quoteTokenContract.decimals()
+            const price = (1 / poolConfig.initialRate) * Math.pow(10, baseTokenDecimal - quoteTokenDecimal)
+            param = [71, baseToken.tokenAddress, quoteToken.tokenAddress, poolConfig.poolIdx, toSqrtPrice(price)]
         }
 
         let override: {value?: BigNumber, gasLimit: number} = { gasLimit: 9000000 };
@@ -204,7 +210,7 @@ async function deployPools() {
             const baseTokenAllowance = await baseTokenContract.allowance(deployer, dex.address);
             if(baseTokenAllowance.toString() === "0") {
                 console.log(`===== APPROVE TX FOR BASE TOKEN (${baseToken.tokenSymbol} - ${baseToken.tokenAddress}) =====`)
-                const tx = await baseTokenContract.approve(dex.address, "10000000") // max initial liq
+                const tx = await baseTokenContract.approve(dex.address, "1000000000000000000")
                 await tx.wait()
             }
         }
@@ -213,7 +219,7 @@ async function deployPools() {
             const quoteTokenAllowance = await quoteTokenContract.allowance(deployer, dex.address);
             if(quoteTokenAllowance.toString() === "0") {
                 console.log(`===== APPROVE TX FOR QUOTE TOKEN (${quoteToken.tokenSymbol} - ${quoteToken.tokenAddress}) =====`)
-                const tx = await quoteTokenContract.approve(dex.address, "10000000") // max initial liq
+                const tx = await quoteTokenContract.approve(dex.address, "1000000000000000000")
                 await tx.wait()
             }
         }

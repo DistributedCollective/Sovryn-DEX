@@ -80,20 +80,20 @@ const poolsToRevise = [
         poolIdx: 400,
         newFee: 3500, // 0.35%
     },
-    // {
-    //     baseToken: {
-    //         tokenSymbol: "POWA",
-    //         tokenDeploymentName: "MOCK2_POWA",
-    //         isNativeToken: false,
-    //     },
-    //     quoteToken: {
-    //         tokenSymbol: "eSOV",
-    //         tokenDeploymentName: "MOCK2_eSOV",
-    //         isNativeToken: false,
-    //     },
-    //     poolIdx: 400,
-    //     newFee: 5000, // 0.5%
-    // },
+    {
+        baseToken: {
+            tokenSymbol: "POWA",
+            tokenDeploymentName: "MOCK2_POWA",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "eSOV",
+            tokenDeploymentName: "MOCK2_eSOV",
+            isNativeToken: false,
+        },
+        poolIdx: 400,
+        newFee: 5000, // 0.5%
+    },
 ]
 
 /** Function to compare 2 addresses
