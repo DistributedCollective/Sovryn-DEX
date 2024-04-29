@@ -46,34 +46,36 @@ const func: DeployFunction = async ({
 
   // @todo add tokens external deployments
   const ETH = ethers.constants.AddressZero;
-  const wBTC = (await get("MOCK2_WBTC")).address;
-  const tBTC = (await get("MOCK2_tBTC")).address;
-  const  rETH = (await get("MOCK2_rETH")).address;
-  const  wstETH = (await get("MOCK2_WSTETH")).address;
-  const  USDT = (await get("MOCK2_USDT")).address;
-  const  USDC = (await get("MOCK2_USDC")).address;
-  const DAI = (await get("MOCK2_DAI")).address;
-  const SOV = (await get("MOCK2_eSOV")).address;
-  const DLLR = (await get("MOCK2_DLLR")).address;
-  const POWA = (await get("MOCK2_POWA")).address;
+  const wBTC = (await get("MOCK_WBTC")).address;
+  const tBTC = (await get("MOCK_tBTC")).address;
+  const  rETH = (await get("MOCK_rETH")).address;
+  const  wstETH = (await get("MOCK_WSTETH")).address;
+  const  USDT = (await get("MOCK_USDT")).address;
+  const  USDC = (await get("MOCK_USDC")).address;
+  const DAI = (await get("MOCK_DAI")).address;
+  const SOV = (await get("MOCK_eSOV")).address;
+  const DLLR = (await get("MOCK_DLLR")).address;
+  const POWA = (await get("MOCK_POWA")).address;
   const sdex = (await get("SdexSwapDex")).address;
-  const poolIdx = POOL_IDXS[ethers.utils.hexlify(network.config.chainId!)].toString();
+  const poolIdx01 = POOL_IDXS[ethers.utils.hexlify(network.config.chainId!)]["01"].toString();
+  const poolIdx035 = POOL_IDXS[ethers.utils.hexlify(network.config.chainId!)]["035"].toString();
+  const poolIdx05 = POOL_IDXS[ethers.utils.hexlify(network.config.chainId!)]["05"].toString();
   
   //@todo set poolIdx - pool template id per pair if needed
   let sdexLpErc20PairsData = [
     // Stable Pairs
-    { base: USDC, quote: USDT, poolIdx: poolIdx },
-    { base: DAI, quote: DLLR, poolIdx: poolIdx },
-    { base: USDT, quote: DLLR, poolIdx: poolIdx },
-    { base: tBTC, quote: wBTC, poolIdx: poolIdx },
-    { base: rETH, quote: ETH, poolIdx: poolIdx },
-    { base: wstETH, quote: ETH, poolIdx: poolIdx },
+    { base: USDC, quote: USDT, poolIdx: poolIdx01 },
+    { base: DAI, quote: DLLR, poolIdx: poolIdx01 },
+    { base: USDT, quote: DLLR, poolIdx: poolIdx01 },
+    { base: tBTC, quote: wBTC, poolIdx: poolIdx01 },
+    { base: rETH, quote: ETH, poolIdx: poolIdx01 },
+    { base: wstETH, quote: ETH, poolIdx: poolIdx01 },
 
     // SOV Pairs
-    { base: DLLR, quote: SOV, poolIdx: poolIdx },
-    { base: ETH, quote: SOV, poolIdx: poolIdx },
-    { base: wBTC, quote: SOV, poolIdx: poolIdx },
-    { base: POWA, quote: SOV, poolIdx: poolIdx },
+    { base: DLLR, quote: SOV, poolIdx: poolIdx035 },
+    { base: ETH, quote: SOV, poolIdx: poolIdx035 },
+    { base: wBTC, quote: SOV, poolIdx: poolIdx035 },
+    { base: POWA, quote: SOV, poolIdx: poolIdx05 },
   ].map(
     ({ base, quote, poolIdx }) => {
       if (compareAddresses(base, quote) > 0) {
