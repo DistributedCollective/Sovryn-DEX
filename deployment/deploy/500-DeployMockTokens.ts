@@ -76,8 +76,8 @@ const func: DeployFunction = async ({
       ]
     },
     {
-      tokenName: "MOCK_eSOV",
-      tokenSymbol: "mESOV",
+      tokenName: "MOCK_SOV",
+      tokenSymbol: "mSOV",
       tokenDecimal: 18,
       initialMintRecipient: [
         "0xCF311E7375083b9513566a47B9f3e93F1FcdCfBF",
