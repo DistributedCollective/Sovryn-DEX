@@ -46,16 +46,16 @@ const func: DeployFunction = async ({
 
   // @todo add tokens external deployments
   const ETH = ethers.constants.AddressZero;
-  const wBTC = (await get("MOCK_WBTC")).address;
-  const tBTC = (await get("MOCK_tBTC")).address;
-  const  rETH = (await get("MOCK_rETH")).address;
-  const  wstETH = (await get("MOCK_WSTETH")).address;
-  const  USDT = (await get("MOCK_USDT")).address;
-  const  USDC = (await get("MOCK_USDC")).address;
-  const DAI = (await get("MOCK_DAI")).address;
-  const SOV = (await get("MOCK_eSOV")).address;
-  const DLLR = (await get("MOCK_DLLR")).address;
-  const POWA = (await get("MOCK_POWA")).address;
+  const wBTC = (await get("wBTC")).address;
+  const tBTC = (await get("tBTC")).address;
+  const  rETH = (await get("rETH")).address;
+  const  wstETH = (await get("wstETH")).address;
+  const  USDT = (await get("USDT")).address;
+  const  USDC = (await get("USDC")).address;
+  const DAI = (await get("DAI")).address;
+  const SOV = (await get("SOV")).address;
+  const DLLR = (await get("DLLR")).address;
+  const POWA = (await get("POWA")).address;
   const sdex = (await get("SdexSwapDex")).address;
   const poolIdx01 = POOL_IDXS[ethers.utils.hexlify(network.config.chainId!)]["01"].toString();
   const poolIdx035 = POOL_IDXS[ethers.utils.hexlify(network.config.chainId!)]["035"].toString();
