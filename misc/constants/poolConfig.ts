@@ -115,11 +115,53 @@ export const bobTestnetPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: false,
         },
         quoteToken: {
-            tokenSymbol: "eSOV",
-            tokenDeploymentName: "MOCK_eSOV",
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
             isNativeToken: false,
         },
         initialRate: 0.47, // paired to SOV (eDLLR/eSOV) --> means 1 eDLLR = 0.47 eSOV
+        poolIdx: 37000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "USDT",
+            tokenDeploymentName: "MOCK_USDT",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        initialRate: 0.47,
+        poolIdx: 37000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "USDC",
+            tokenDeploymentName: "MOCK_USDC",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        initialRate: 0.47,
+        poolIdx: 37000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "DAI",
+            tokenDeploymentName: "MOCK_DAI",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        initialRate: 0.47,
         poolIdx: 37000,
     },
     {
@@ -129,11 +171,25 @@ export const bobTestnetPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: false,
         },
         quoteToken: {
-            tokenSymbol: "eSOV",
-            tokenDeploymentName: "MOCK_eSOV",
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
             isNativeToken: false,
         },
         initialRate: 31330, // paired to SOV (eDLLR/eSOV) --> means 1 eDLLR = 0.47 eSOV
+        poolIdx: 37000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "TBTC",
+            tokenDeploymentName: "MOCK_tBTC",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        initialRate: 31330,
         poolIdx: 37000,
     },
     {
@@ -143,11 +199,39 @@ export const bobTestnetPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: true,
         },
         quoteToken: {
-            tokenSymbol: "eSOV",
-            tokenDeploymentName: "MOCK_eSOV",
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
             isNativeToken: false,
         },
         initialRate: 1522, // paired to SOV (ETH/eSOV) --> means 1 ETH = 1522 eSOV
+        poolIdx: 37000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "wstETH",
+            tokenDeploymentName: "MOCK_WSTETH",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        initialRate: 1522,
+        poolIdx: 37000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "rETH",
+            tokenDeploymentName: "MOCK_rETH",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        initialRate: 1522,
         poolIdx: 37000,
     },
     {
@@ -157,8 +241,8 @@ export const bobTestnetPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: false,
         },
         quoteToken: {
-            tokenSymbol: "eSOV",
-            tokenDeploymentName: "MOCK_eSOV",
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
             isNativeToken: false,
         },
         initialRate: 0.00000168, // paired to SOV (POWA/eSOV) --> means 1 POWA = 0.00000168 eSOV
@@ -260,11 +344,53 @@ export const bobMainnetMockPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: false,
         },
         quoteToken: {
-            tokenSymbol: "eSOV",
-            tokenDeploymentName: "MOCK_eSOV",
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
             isNativeToken: false,
         },
         initialRate: 0.47, // paired to SOV (eDLLR/eSOV) --> means 1 eDLLR = 0.47 eSOV
+        poolIdx: 410,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "USDT",
+            tokenDeploymentName: "MOCK_USDT",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        initialRate: 0.47,
+        poolIdx: 410,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "USDC",
+            tokenDeploymentName: "MOCK_USDC",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        initialRate: 0.47,
+        poolIdx: 410,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "DAI",
+            tokenDeploymentName: "MOCK_DAI",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        initialRate: 0.47,
         poolIdx: 410,
     },
     {
@@ -274,11 +400,25 @@ export const bobMainnetMockPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: false,
         },
         quoteToken: {
-            tokenSymbol: "eSOV",
-            tokenDeploymentName: "MOCK_eSOV",
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
             isNativeToken: false,
         },
         initialRate: 31330, // paired to SOV (eDLLR/eSOV) --> means 1 eDLLR = 0.47 eSOV
+        poolIdx: 410,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "TBTC",
+            tokenDeploymentName: "MOCK_tBTC",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        initialRate: 31330,
         poolIdx: 410,
     },
     {
@@ -288,11 +428,39 @@ export const bobMainnetMockPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: true,
         },
         quoteToken: {
-            tokenSymbol: "eSOV",
-            tokenDeploymentName: "MOCK_eSOV",
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
             isNativeToken: false,
         },
         initialRate: 1522, // paired to SOV (ETH/eSOV) --> means 1 ETH = 1522 eSOV
+        poolIdx: 410,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "wstETH",
+            tokenDeploymentName: "MOCK_WSTETH",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        initialRate: 1522,
+        poolIdx: 410,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "rETH",
+            tokenDeploymentName: "MOCK_rETH",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        initialRate: 1522,
         poolIdx: 410,
     },
     {
@@ -302,8 +470,8 @@ export const bobMainnetMockPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: false,
         },
         quoteToken: {
-            tokenSymbol: "eSOV",
-            tokenDeploymentName: "MOCK_eSOV",
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
             isNativeToken: false,
         },
         initialRate: 0.00000168, // paired to SOV (POWA/eSOV) --> means 1 POWA = 0.00000168 eSOV
@@ -406,11 +574,53 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: false,
         },
         quoteToken: {
-            tokenSymbol: "eSOV",
+            tokenSymbol: "SOV",
             tokenDeploymentName: "SOV",
             isNativeToken: false,
         },
         initialRate: 0.47, // paired to SOV (eDLLR/eSOV) --> means 1 eDLLR = 0.47 eSOV
+        poolIdx: 410,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "USDT",
+            tokenDeploymentName: "USDT",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "SOV",
+            isNativeToken: false,
+        },
+        initialRate: 0.47,
+        poolIdx: 410,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "USDC",
+            tokenDeploymentName: "USDC",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "SOV",
+            isNativeToken: false,
+        },
+        initialRate: 0.47,
+        poolIdx: 410,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "DAI",
+            tokenDeploymentName: "DAI",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "SOV",
+            isNativeToken: false,
+        },
+        initialRate: 0.47,
         poolIdx: 410,
     },
     {
@@ -420,11 +630,25 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: false,
         },
         quoteToken: {
-            tokenSymbol: "eSOV",
+            tokenSymbol: "SOV",
             tokenDeploymentName: "SOV",
             isNativeToken: false,
         },
         initialRate: 31330, // paired to SOV (eDLLR/eSOV) --> means 1 eDLLR = 0.47 eSOV
+        poolIdx: 410,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "TBTC",
+            tokenDeploymentName: "tBTC",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "SOV",
+            isNativeToken: false,
+        },
+        initialRate: 31330,
         poolIdx: 410,
     },
     {
@@ -434,11 +658,39 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: true,
         },
         quoteToken: {
-            tokenSymbol: "eSOV",
+            tokenSymbol: "SOV",
             tokenDeploymentName: "SOV",
             isNativeToken: false,
         },
         initialRate: 1522, // paired to SOV (ETH/eSOV) --> means 1 ETH = 1522 eSOV
+        poolIdx: 410,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "wstETH",
+            tokenDeploymentName: "wstETH",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "SOV",
+            isNativeToken: false,
+        },
+        initialRate: 1522,
+        poolIdx: 410,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "rETH",
+            tokenDeploymentName: "rETH",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "SOV",
+            isNativeToken: false,
+        },
+        initialRate: 1522,
         poolIdx: 410,
     },
     {
@@ -448,7 +700,7 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: false,
         },
         quoteToken: {
-            tokenSymbol: "eSOV",
+            tokenSymbol: "SOV",
             tokenDeploymentName: "SOV",
             isNativeToken: false,
         },

@@ -76,8 +76,8 @@ const func: DeployFunction = async ({
       ]
     },
     {
-      tokenName: "MOCK2_eSOV",
-      tokenSymbol: "m2ESOV",
+      tokenName: "MOCK2_SOV",
+      tokenSymbol: "m2SOV",
       tokenDecimal: 18,
       initialMintRecipient: [
         "0xCF311E7375083b9513566a47B9f3e93F1FcdCfBF",

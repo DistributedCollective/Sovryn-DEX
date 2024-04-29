@@ -53,7 +53,7 @@ const func: DeployFunction = async ({
   const  USDT = (await get("MOCK_USDT")).address;
   const  USDC = (await get("MOCK_USDC")).address;
   const DAI = (await get("MOCK_DAI")).address;
-  const SOV = (await get("MOCK_eSOV")).address;
+  const SOV = (await get("MOCK_SOV")).address;
   const DLLR = (await get("MOCK_DLLR")).address;
   const POWA = (await get("MOCK_POWA")).address;
   const sdex = (await get("SdexSwapDex")).address;
@@ -73,9 +73,17 @@ const func: DeployFunction = async ({
 
     // SOV Pairs
     { base: DLLR, quote: SOV, poolIdx: poolIdx035 },
+    { base: USDT, quote: SOV, poolIdx: poolIdx035 },
+    { base: USDC, quote: SOV, poolIdx: poolIdx035 },
+    { base: DAI, quote: SOV, poolIdx: poolIdx035 },
     { base: ETH, quote: SOV, poolIdx: poolIdx035 },
+    { base: wstETH, quote: SOV, poolIdx: poolIdx035 },
+    { base: rETH, quote: SOV, poolIdx: poolIdx035 },
     { base: wBTC, quote: SOV, poolIdx: poolIdx035 },
+    { base: tBTC, quote: SOV, poolIdx: poolIdx035 },
     { base: POWA, quote: SOV, poolIdx: poolIdx05 },
+
+
   ].map(
     ({ base, quote, poolIdx }) => {
       if (compareAddresses(base, quote) > 0) {
