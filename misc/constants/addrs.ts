@@ -231,7 +231,11 @@ export let POOL_IDXS = {
       "035": 410,
       "05": 420,
     }, // BOB mainnet
-    '0xaa36a7': 36000, // sepolia
+    '0xaa36a7': {
+      "01": 36000,
+      "035": 37000,
+      "05": 38000,
+    }, // sepolia
     '0x7a69': 36000, // hh local fork
 }
 

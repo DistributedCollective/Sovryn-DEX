@@ -18,9 +18,9 @@ async function install() {
     
     let policy = (await inflateAddr("SdexPolicy", addrs.policy, authority)) as SdexPolicy
 
-    // let initCmd = initLiqCmd(poolParams)
-    // await traceContractTx(policy.opsResolution(addrs.dex, initCmd.callpath, 
-    //     initCmd.protocolCmd, txArgs), "Set pool init liquidity")
+    let initCmd = initLiqCmd(poolParams)
+    await traceContractTx(policy.opsResolution(addrs.dex, initCmd.callpath, 
+        initCmd.protocolCmd, txArgs), "Set pool init liquidity")
 
     let templCmd = poolStdTemplCmd(poolParams)
     await traceContractTx(policy.opsResolution(addrs.dex, templCmd.callpath, 
