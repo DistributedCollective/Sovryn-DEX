@@ -6,6 +6,7 @@ import "../libraries/PoolSpecs.sol";
 import "../interfaces/ISdexLpConduit.sol";
 import "../interfaces/ISdexMinion.sol";
 import { ERC20Upgradeable } from "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
+import { IERC20MetadataUpgradeable } from "@openzeppelin/contracts-upgradeable/interfaces/IERC20MetadataUpgradeable.sol";
 
 contract SdexLpErc20 is ERC20Upgradeable, ISdexLpConduit {
 
@@ -44,7 +45,7 @@ contract SdexLpErc20 is ERC20Upgradeable, ISdexLpConduit {
         poolHash = PoolSpecs.encodeKey(_base, _quote, _poolIdx);
         sdex = _sdex;
 
-        __ERC20_init("Sdex Ambient LP ERC20 Token", "LP-SdexAmb");
+        __ERC20_init(string.concat("Sdex Ambient LP ERC20 ", IERC20MetadataUpgradeable(baseToken).symbol(), "/", IERC20MetadataUpgradeable(quoteToken).symbol() ," Token"), string.concat("LP-SdexAmb-", IERC20MetadataUpgradeable(baseToken).symbol(), "/", IERC20MetadataUpgradeable(quoteToken).symbol()));
     }
     
     function depositSdexLiq (address sender, bytes32 pool,
