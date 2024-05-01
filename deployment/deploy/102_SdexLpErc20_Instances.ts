@@ -63,25 +63,18 @@ const func: DeployFunction = async ({
   
   //@todo set poolIdx - pool template id per pair if needed
   let sdexLpErc20PairsData = [
-    // Stable Pairs
-    { base: USDC, quote: USDT, poolIdx: poolIdx01 },
-    { base: DAI, quote: DLLR, poolIdx: poolIdx01 },
-    { base: USDT, quote: DLLR, poolIdx: poolIdx01 },
-    { base: tBTC, quote: wBTC, poolIdx: poolIdx01 },
-    { base: rETH, quote: ETH, poolIdx: poolIdx01 },
-    { base: wstETH, quote: ETH, poolIdx: poolIdx01 },
-
-    // SOV Pairs
-    { base: DLLR, quote: SOV, poolIdx: poolIdx01 },
     { base: USDT, quote: SOV, poolIdx: poolIdx035 },
     { base: USDC, quote: SOV, poolIdx: poolIdx035 },
-    { base: DAI, quote: SOV, poolIdx: poolIdx035 },
+    { base: wBTC, quote: SOV, poolIdx: poolIdx035 },
+    { base: tBTC, quote: SOV, poolIdx: poolIdx035 },
     { base: ETH, quote: SOV, poolIdx: poolIdx035 },
     { base: wstETH, quote: SOV, poolIdx: poolIdx035 },
     { base: rETH, quote: SOV, poolIdx: poolIdx035 },
-    { base: wBTC, quote: SOV, poolIdx: poolIdx035 },
-    { base: tBTC, quote: SOV, poolIdx: poolIdx035 },
-    { base: POWA, quote: SOV, poolIdx: poolIdx05 },
+    { base: DAI, quote: SOV, poolIdx: poolIdx035 },
+    { base: DLLR, quote: SOV, poolIdx: poolIdx01 },
+    { base: USDC, quote: USDT, poolIdx: poolIdx01 },
+    { base: USDT, quote: DLLR, poolIdx: poolIdx01 },
+    { base: tBTC, quote: wBTC, poolIdx: poolIdx01 },
   ].map(
     ({ base, quote, poolIdx }) => {
       if (compareAddresses(base, quote) > 0) {

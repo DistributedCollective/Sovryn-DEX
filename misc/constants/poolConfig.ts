@@ -727,20 +727,6 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
     },
     {
         baseToken: {
-            tokenSymbol: "DAI",
-            tokenDeploymentName: "DAI",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "eDLLR",
-            tokenDeploymentName: "DLLR",
-            isNativeToken: false,
-        },
-        initialRate: 1, // (DAI/eDLLR) --> means 1 DAI = 1 eDLLR
-        poolIdx: 400,
-    },
-    {
-        baseToken: {
             tokenSymbol: "USDT",
             tokenDeploymentName: "USDT",
             isNativeToken: false,
@@ -765,34 +751,6 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: false,
         },
         initialRate: 1, // (tBTC/WBTC) --> means 1 tBTC = 1 WBTC
-        poolIdx: 400,
-    },
-    {
-        baseToken: {
-            tokenSymbol: "rETH",
-            tokenDeploymentName: "rETH",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "ETH",
-            tokenDeploymentName: "ETH",
-            isNativeToken: true,
-        },
-        initialRate: 1, // paired to SOV (rETH/ETH) --> means 1 rETH = 1 ETH
-        poolIdx: 400,
-    },
-    {
-        baseToken: {
-            tokenSymbol: "wstETH",
-            tokenDeploymentName: "wstETH",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "ETH",
-            tokenDeploymentName: "ETH",
-            isNativeToken: true,
-        },
-        initialRate: 1, // (wstETH/ETH) --> means 1 wstETH = 1 ETH
         poolIdx: 400,
     },
 
@@ -922,20 +880,6 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
         },
         initialRate: 1522,
         poolIdx: 410,
-    },
-    {
-        baseToken: {
-            tokenSymbol: "POWA",
-            tokenDeploymentName: "POWA",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "SOV",
-            tokenDeploymentName: "SOV",
-            isNativeToken: false,
-        },
-        initialRate: 0.00000168, // paired to SOV (POWA/eSOV) --> means 1 POWA = 0.00000168 eSOV
-        poolIdx: 420,
     },
 ]
 
