@@ -11,9 +11,9 @@ async function install() {
 
     let policy = (await inflateAddr("SdexPolicy", addrs.policy, authority)) as SdexPolicy
     /** @todo change the addresses to multisig */
-    const opsAddress = "0xCF311E7375083b9513566a47B9f3e93F1FcdCfBF";
-    const treasuryAddress = "0xCF311E7375083b9513566a47B9f3e93F1FcdCfBF";
-    const emergencyAddress = "0xCF311E7375083b9513566a47B9f3e93F1FcdCfBF";
+    const opsAddress = "0x04FB154FD8f611D2737A5ca4996Fb654CeAf2EBF";
+    const treasuryAddress = "0x04FB154FD8f611D2737A5ca4996Fb654CeAf2EBF";
+    const emergencyAddress = "0x04FB154FD8f611D2737A5ca4996Fb654CeAf2EBF";
 
     console.log("===== Transferring auths of policy =====")
     console.log(`old opsAddress: ${await policy.opsAuthority_()}`)
@@ -21,9 +21,13 @@ async function install() {
     console.log(`old emergencyAddress: ${await policy.emergencyAuthority_()}`)
 
     console.log(`new opsAddress: ${opsAddress}`)
-    console.log(`new treasuryAddress: ${opsAddress}`)
-    console.log(`new emergencyAddress: ${opsAddress}`)
+    console.log(`new treasuryAddress: ${treasuryAddress}`)
+    console.log(`new emergencyAddress: ${emergencyAddress}`)
     await policy.transferOwnership(opsAddress, treasuryAddress, emergencyAddress);
+
+    console.log(`transferred opsAuth to: ${await policy.opsAuthority_()}`)
+    console.log(`transferred treasuryAuth to: ${await policy.treasuryAuthority_()}`)
+    console.log(`transferred emergencyAuth to: ${await policy.emergencyAuthority_()}`)
 }
 
 install()
