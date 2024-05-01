@@ -72,7 +72,7 @@ const func: DeployFunction = async ({
     { base: wstETH, quote: ETH, poolIdx: poolIdx01 },
 
     // SOV Pairs
-    { base: DLLR, quote: SOV, poolIdx: poolIdx035 },
+    { base: DLLR, quote: SOV, poolIdx: poolIdx01 },
     { base: USDT, quote: SOV, poolIdx: poolIdx035 },
     { base: USDC, quote: SOV, poolIdx: poolIdx035 },
     { base: DAI, quote: SOV, poolIdx: poolIdx035 },

@@ -120,7 +120,7 @@ export const sepoliaTestnetPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: false,
         },
         initialRate: 0.47, // paired to SOV (eDLLR/eSOV) --> means 1 eDLLR = 0.47 eSOV
-        poolIdx: 37000,
+        poolIdx: 36000,
     },
     {
         baseToken: {
@@ -350,7 +350,7 @@ export const bobTestnetPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: false,
         },
         initialRate: 0.47, // paired to SOV (eDLLR/eSOV) --> means 1 eDLLR = 0.47 eSOV
-        poolIdx: 37000,
+        poolIdx: 36000,
     },
     {
         baseToken: {
@@ -579,7 +579,7 @@ export const bobMainnetMockPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: false,
         },
         initialRate: 0.47, // paired to SOV (eDLLR/eSOV) --> means 1 eDLLR = 0.47 eSOV
-        poolIdx: 410,
+        poolIdx: 400,
     },
     {
         baseToken: {
@@ -809,7 +809,7 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: false,
         },
         initialRate: 0.47, // paired to SOV (eDLLR/eSOV) --> means 1 eDLLR = 0.47 eSOV
-        poolIdx: 410,
+        poolIdx: 400,
     },
     {
         baseToken: {
