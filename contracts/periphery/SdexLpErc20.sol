@@ -45,7 +45,17 @@ contract SdexLpErc20 is ERC20Upgradeable, ISdexLpConduit {
         poolHash = PoolSpecs.encodeKey(_base, _quote, _poolIdx);
         sdex = _sdex;
 
-        __ERC20_init(string.concat("Sdex Ambient LP ERC20 ", IERC20MetadataUpgradeable(baseToken).symbol(), "/", IERC20MetadataUpgradeable(quoteToken).symbol() ," Token"), string.concat("LP-SdexAmb-", IERC20MetadataUpgradeable(baseToken).symbol(), "/", IERC20MetadataUpgradeable(quoteToken).symbol()));
+        string memory baseTokenSymbol = "ETH";
+        string memory quoteTokenSymbol = "ETH";
+
+        if(baseToken != address(0)) {
+            baseTokenSymbol = IERC20MetadataUpgradeable(baseToken).symbol();
+        } 
+        if(quoteToken != address(0)) {
+            quoteTokenSymbol = IERC20MetadataUpgradeable(quoteToken).symbol();
+        }
+
+        __ERC20_init(string.concat("Sdex Ambient LP ERC20 ", baseTokenSymbol, "/",  quoteTokenSymbol, " Token"), string.concat("LP-SdexAmb-", baseTokenSymbol, "/", quoteTokenSymbol));
     }
     
     function depositSdexLiq (address sender, bytes32 pool,
