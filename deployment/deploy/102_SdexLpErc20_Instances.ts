@@ -55,7 +55,7 @@ const func: DeployFunction = async ({
   const DAI = (await get("DAI")).address;
   const SOV = (await get("SOV")).address;
   const DLLR = (await get("DLLR")).address;
-  // const POWA = (await get("POWA")).address;
+  const POWA = (await get("POWA")).address;
   const sdex = (await get("SdexSwapDex")).address;
   const poolIdx01 = POOL_IDXS[ethers.utils.hexlify(network.config.chainId!)]["01"].toString();
   const poolIdx035 = POOL_IDXS[ethers.utils.hexlify(network.config.chainId!)]["035"].toString();
@@ -75,6 +75,7 @@ const func: DeployFunction = async ({
     { base: USDC, quote: USDT, poolIdx: poolIdx01 },
     { base: USDT, quote: DLLR, poolIdx: poolIdx01 },
     { base: tBTC, quote: wBTC, poolIdx: poolIdx01 },
+    { base: POWA, quote: SOV, poolIdx: poolIdx05 },
   ].map(
     ({ base, quote, poolIdx }) => {
       if (compareAddresses(base, quote) > 0) {
