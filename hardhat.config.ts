@@ -102,7 +102,7 @@ module.exports = {
       },
 
       bobMainnet: {
-        url: 'https://bob-rpc.sovryn.app/',
+        url: 'https://rpc.gobob.xyz/',
         chainId: 60808,
         accounts: mainnetAccounts,
         live: true,
@@ -110,7 +110,7 @@ module.exports = {
       },
 
       bobTestnet: {
-        url: 'https://bob-rpc.test.sovryn.app/',
+        url: 'https://testnet.rpc.gobob.xyz/',
         chainId: 111,
         accounts: testnetAccounts,
         gasPrice: 50000000,
