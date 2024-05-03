@@ -1,6 +1,6 @@
 import { BigNumber } from 'ethers';
 
-const PRECISION = 10000000000
+const PRECISION = 1000000000000;
 export const Q_64 = BigNumber.from(2).pow(64);
 export const Q_48 = BigNumber.from(2).pow(48);
 
