@@ -34,10 +34,10 @@ describe('Pool Conduit', () => {
        test.useHotPath = true
 
        let factory = await ethers.getContractFactory("SdexLpErc20") as ContractFactory
-       conduit = (await factory.deploy()) as SdexLpErc20
 
-       await conduit.initialize(baseToken.address, quoteToken.address, test.poolIdx, (await test.dex).address)
-       test.lpConduit = conduit.address
+       const conduitAddress = await (await test.query).queryPoolLpToken(baseToken.address, quoteToken.address, test.poolIdx);
+       conduit = await ethers.getContractAt("SdexLpErc20", conduitAddress) as SdexLpErc20;
+       test.lpConduit = conduit.address;
 
        factory = await ethers.getContractFactory("SdexQuery") as ContractFactory
        query = (await factory.deploy((await test.dex).address)) as SdexQuery
@@ -85,7 +85,6 @@ describe('Pool Conduit', () => {
         // Wrong token
         let factory = await ethers.getContractFactory("SdexLpErc20") as ContractFactory
         conduit = (await factory.deploy()) as SdexLpErc20
-        await conduit.initialize(baseTokenAlt.address, quoteTokenAlt.address, testAlt.poolIdx, (await test.dex).address)
         testAlt.lpConduit = conduit.address
         await testAlt.testMintAmbient(8000)
 
@@ -98,7 +97,6 @@ describe('Pool Conduit', () => {
         // Wrong pool index
         let factory = await ethers.getContractFactory("SdexLpErc20") as ContractFactory
         conduit = (await factory.deploy()) as SdexLpErc20
-        await conduit.initialize(baseToken.address, quoteToken.address, 5000, (await test.dex).address)
         test.lpConduit = conduit.address
         await expect(test.testMintAmbient(5000)).to.be.reverted
     })

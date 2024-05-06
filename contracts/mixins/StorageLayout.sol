@@ -161,6 +161,13 @@ contract StorageLayout {
     uint8 MAX_TAKE_RATE = 128;
 
     mapping(bytes32 => RangePosition72) internal positions72_;
+
+    /**************************************************************/
+    // Pool LP Token
+    /**************************************************************/
+    mapping(bytes32 => address) internal poolLpTokens;
+    address lpTokenDeployerAddress;
+    /**************************************************************/
 }
 
 /* @notice Contains the storage or storage hash offsets of the fields and sidecars
@@ -187,6 +194,8 @@ library SdexSlots {
     uint constant public CURVE_MAP_SLOT = 65551;
     uint constant public BAL_MAP_SLOT = 65552;
     uint constant public POS_MAP_SLOT_72 = 65554;
+    uint constant public POOL_LP_TOKEN_SLOT = 65555;
+    uint constant public LP_TOKEN_DEPLOYER_SLOT = 65556;
 
         
     // The slots of the currently attached sidecar proxy contracts. These are set by

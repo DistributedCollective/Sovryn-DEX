@@ -192,6 +192,11 @@ contract TradeMatcher is PositionRegistrar, LiquidityCurve, KnockoutCounter,
     function depositConduit (bytes32 poolHash, int24 lowTick, int24 highTick,
                              uint128 liq, uint72 mileage, address lpConduit) private {
         if (lpConduit != lockHolder_) {
+            if(lowTick == 0 && highTick == 0) {
+                // Add lp token validation for ambient liquidity
+                require(poolLpTokens[poolHash] == lpConduit, "ILC");
+            }
+
             bool doesAccept = ISdexLpConduit(lpConduit).
                 depositSdexLiq(lockHolder_, poolHash, lowTick, highTick, liq, mileage);
             require(doesAccept, "LP");
@@ -210,6 +215,11 @@ contract TradeMatcher is PositionRegistrar, LiquidityCurve, KnockoutCounter,
     function withdrawConduit (bytes32 poolHash, int24 lowTick, int24 highTick,
                               uint128 liq, uint72 mileage, address lpConduit) private {
         if (lpConduit != lockHolder_) {
+            if(lowTick == 0 && highTick == 0) {
+                // Add lp token validation for ambient liquidity
+                require(poolLpTokens[poolHash] == lpConduit, "ILC");
+            }
+
             bool doesAccept = ISdexLpConduit(lpConduit).
                 withdrawSdexLiq(lockHolder_, poolHash, lowTick, highTick, liq, mileage);
             require(doesAccept, "LP");

@@ -7,9 +7,12 @@ import "../interfaces/ISdexLpConduit.sol";
 import "../interfaces/ISdexMinion.sol";
 import { ERC20Upgradeable } from "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
 import { IERC20MetadataUpgradeable } from "@openzeppelin/contracts-upgradeable/interfaces/IERC20MetadataUpgradeable.sol";
+import { IERC20MetadataUpgradeable } from "@openzeppelin/contracts-upgradeable/interfaces/IERC20MetadataUpgradeable.sol";
+
+import { Address } from "@openzeppelin/contracts/utils/Address.sol";
 
 contract SdexLpErc20 is ERC20Upgradeable, ISdexLpConduit {
-
+    using Address for address;
     bytes32 public poolHash;
     address public baseToken;
     address public quoteToken;
@@ -33,7 +36,16 @@ contract SdexLpErc20 is ERC20Upgradeable, ISdexLpConduit {
         // token could be 0x0, which means the pair is against native ETH. quote
         // will never be 0x0 because native ETH will always be the base side of
         // the pair.
-        require(_quote != address(0) && _base != _quote && _quote > _base, "Invalid Token Pair");
+        require(
+            _quote.isContract() &&
+            _base != address(this) &&
+            _quote != address(this) &&
+            _base != _quote &&
+            _quote > _base, 
+            "Invalid Token Pair"
+        );
+
+        require(_base == address(0) || _base.isContract(), "Invalid Base Token");
 
         bytes memory callData = abi.encodeWithSignature("acceptSdexDex()");
         (bool success, bytes memory data) = _sdex.call(callData);

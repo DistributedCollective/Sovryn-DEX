@@ -21,10 +21,24 @@ export async function buildSdexSwapDex (auth: Promise<Signer>): Promise<SdexSwap
     let factory = await ethers.getContractFactory("SdexSwapDex")
     let dex = await factory.connect(await auth).deploy() as SdexSwapDex
 
+    factory = await ethers.getContractFactory("SdexLpErc20");
+    let lpTokenLogic = await factory.deploy();
+    factory = await ethers.getContractFactory("SdexUpgradeableBeacon");
+    let upgradeableBeacon = await factory.deploy(lpTokenLogic.address, ethers.constants.AddressZero);
+    
+
     factory = await ethers.getContractFactory("ColdPath")
     let proxy = await factory.deploy()
     let cmd = abi.encode(["uint8", "address", "uint16"], [21, proxy.address, COLD_PROXY_IDX])
     await dex.protocolCmd(BOOT_PROXY_IDX, cmd, true)
+
+    /** Set lp token deployer adddress */
+    factory = await ethers.getContractFactory("SdexLpTokenDeployer")
+    let lpTokenDeployer = await factory.deploy(upgradeableBeacon.address);
+    let abiCoder = new ethers.utils.AbiCoder()
+    let lpTokenBeaconCmd = abiCoder.encode(["uint8", "address"], [118, lpTokenDeployer.address]);
+    await dex.protocolCmd(COLD_PROXY_IDX, lpTokenBeaconCmd, false)
+    /** End Set lp token deployer adddress */
 
     factory = await ethers.getContractFactory("HotProxy")
     proxy = await factory.deploy()

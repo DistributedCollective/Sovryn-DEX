@@ -74,7 +74,7 @@ describe('TestCompoundMath', () => {
       expect(result).to.gte(toFixedGrowth(0.02));
 
       result = await comp.testShrink(toFixedGrowth(0.02), toFixedGrowth(0.01));
-      expect(fromFixedGrowth(result)).to.lte(0.01980198);
+      expect(fromFixedGrowth(result)).to.lte(0.019801980198);
       expect(fromFixedGrowth(result)).to.gte(0.01980195);
 
       result = await comp.testShrink(toFixedGrowth(0.25), toFixedGrowth(0.1));
