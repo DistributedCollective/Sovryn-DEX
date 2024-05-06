@@ -44,34 +44,34 @@ async function install() {
 
     let policy = (await inflateAddr("SdexPolicy", addrs.policy, authority)) as SdexPolicy
 
-    // // Install cold path proxy
-    // cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.cold, COLD_PROXY_IDX])
-    // await traceContractTx(policy.treasuryResolution(
-    //     addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install cold path")
+    // Install cold path proxy
+    cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.cold, COLD_PROXY_IDX])
+    await traceContractTx(policy.treasuryResolution(
+        addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install cold path")
 
-    // cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.long, LONG_PROXY_IDX])
-    // await traceContractTx(policy.treasuryResolution(
-    //     addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install long path")
+    cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.long, LONG_PROXY_IDX])
+    await traceContractTx(policy.treasuryResolution(
+        addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install long path")
 
-    // cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.warm, LP_PROXY_IDX])
-    // await traceContractTx(policy.treasuryResolution(
-    //     addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install warm path")
+    cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.warm, LP_PROXY_IDX])
+    await traceContractTx(policy.treasuryResolution(
+        addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install warm path")
 
-    // cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.hot, SWAP_PROXY_IDX])
-    // await traceContractTx(policy.treasuryResolution(
-    //     addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install hot proxy path")
+    cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.hot, SWAP_PROXY_IDX])
+    await traceContractTx(policy.treasuryResolution(
+        addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install hot proxy path")
 
-    // cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.micro, MICRO_PROXY_IDX])
-    // await traceContractTx(policy.treasuryResolution(
-    //     addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install micro paths")
+    cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.micro, MICRO_PROXY_IDX])
+    await traceContractTx(policy.treasuryResolution(
+        addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install micro paths")
 
-    // cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.knockout, KNOCKOUT_LP_PROXY_IDX])
-    // await traceContractTx(policy.treasuryResolution(
-    //     addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install knockout liquidity proxy path")
+    cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.knockout, KNOCKOUT_LP_PROXY_IDX])
+    await traceContractTx(policy.treasuryResolution(
+        addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install knockout liquidity proxy path")
 
-    // cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.koCross, FLAG_CROSS_PROXY_IDX])
-    // await traceContractTx(policy.treasuryResolution(
-    //     addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install knockout cross proxy path")
+    cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.koCross, FLAG_CROSS_PROXY_IDX])
+    await traceContractTx(policy.treasuryResolution(
+        addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install knockout cross proxy path")
 
 
     // register lp token
