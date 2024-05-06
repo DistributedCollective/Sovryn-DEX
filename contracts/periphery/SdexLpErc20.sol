@@ -37,15 +37,18 @@ contract SdexLpErc20 is ERC20Upgradeable, ISdexLpConduit {
         // will never be 0x0 because native ETH will always be the base side of
         // the pair.
         require(
-            _quote.isContract() &&
-            _base != address(this) &&
-            _quote != address(this) &&
-            _base != _quote &&
+            (_base == address(0) || _base.isContract()) 
+            && _base != address(this),
+            "Invalid Base Token");
+        require(
+            _quote.isContract() 
+            && _quote != address(this),
+            "Invalid Quote Token");
+        require(
             _quote > _base, 
             "Invalid Token Pair"
         );
 
-        require(_base == address(0) || _base.isContract(), "Invalid Base Token");
 
         bytes memory callData = abi.encodeWithSignature("acceptSdexDex()");
         (bool success, bytes memory data) = _sdex.call(callData);

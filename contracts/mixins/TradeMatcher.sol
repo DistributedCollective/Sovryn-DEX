@@ -194,7 +194,7 @@ contract TradeMatcher is PositionRegistrar, LiquidityCurve, KnockoutCounter,
         if (lpConduit != lockHolder_) {
             if(lowTick == 0 && highTick == 0) {
                 // Add lp token validation for ambient liquidity
-                require(poolLpTokens[poolHash] == lpConduit, "ILC");
+                require(poolLpTokens[poolHash] == lpConduit, "DILC");
             }
 
             bool doesAccept = ISdexLpConduit(lpConduit).
@@ -217,7 +217,7 @@ contract TradeMatcher is PositionRegistrar, LiquidityCurve, KnockoutCounter,
         if (lpConduit != lockHolder_) {
             if(lowTick == 0 && highTick == 0) {
                 // Add lp token validation for ambient liquidity
-                require(poolLpTokens[poolHash] == lpConduit, "ILC");
+                require(poolLpTokens[poolHash] == lpConduit, "WILC");
             }
 
             bool doesAccept = ISdexLpConduit(lpConduit).

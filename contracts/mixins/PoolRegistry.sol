@@ -345,7 +345,7 @@ contract PoolRegistry is StorageLayout {
     }
 
     /**
-     * @dev Set / attach specfici lp token to the particular pool
+     * @dev Set / attach the pool LP token to the pool
      * @param base base token address
      * @param quote quote token address
      * @param poolIdx pool template id

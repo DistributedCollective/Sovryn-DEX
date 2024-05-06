@@ -35,7 +35,7 @@ describe('Pool Conduit', () => {
 
        let factory = await ethers.getContractFactory("SdexLpErc20") as ContractFactory
 
-       const conduitAddress = await (await test.query).queryPoolLpToken(baseToken.address, quoteToken.address, test.poolIdx);
+       const conduitAddress = await (await test.query).queryPoolLpTokenAddress(baseToken.address, quoteToken.address, test.poolIdx);
        conduit = await ethers.getContractAt("SdexLpErc20", conduitAddress) as SdexLpErc20;
        test.lpConduit = conduit.address;
 

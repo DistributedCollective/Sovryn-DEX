@@ -519,7 +519,7 @@ contract SdexQuery {
     }
 
     /* @notice Queries and returns the current pool lp token for a given pool detail. */
-    function queryPoolLpToken (address base, address quote, uint256 poolIdx) public view returns (address) {
+    function queryPoolLpTokenAddress (address base, address quote, uint256 poolIdx) public view returns (address) {
         bytes32 key = PoolSpecs.encodeKey(base, quote, poolIdx);
         bytes32 slot = keccak256(abi.encode(key, SdexSlots.POOL_LP_TOKEN_SLOT));
         uint256 val = SdexSwapDex(dex_).readSlot(uint256(slot));
@@ -527,7 +527,7 @@ contract SdexQuery {
     }
 
     /* @notice Queries the current lp token beacon address */
-    function queryLpTokenBeaconAddress () public view returns (address) {
+    function queryLpTokenDeployerAddress () public view returns (address) {
         uint256 val = SdexSwapDex(dex_).readSlot(SdexSlots.LP_TOKEN_DEPLOYER_SLOT);
         return address(uint160(val));
     }

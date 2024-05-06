@@ -886,17 +886,20 @@ export class TestPool {
     }
 
     async setupLpTokenBeaconAddress (dex: SdexSwapDex) {
+        // 1. deploy LP token logic
+        // 2. deploy Beacon(lpTokenLogic)
+        // 3. deploy LP tokens Factory LpTokenDeployer(beacon.address)
         let lpTokenfactory = await ethers.getContractFactory("SdexLpErc20") as ContractFactory;
         let lpTokenLogic = await lpTokenfactory.deploy();
         let upgradeableBeaconFactory = await ethers.getContractFactory("SdexUpgradeableBeacon") as ContractFactory
         let upgradeableBeacon = await upgradeableBeaconFactory.deploy(lpTokenLogic.address, ethers.constants.AddressZero);
 
-        let sdexLpTokenDeployerfactory = await ethers.getContractFactory("SdexLpTokenDeployer")
-        let lpTokenDeployer = await sdexLpTokenDeployerfactory.deploy(upgradeableBeacon.address);
+        let sdexLpTokenDeployerFactory = await ethers.getContractFactory("SdexLpTokenDeployer")
+        let lpTokenDeployer = await sdexLpTokenDeployerFactory.deploy(upgradeableBeacon.address);
         
         let abiCoder = new ethers.utils.AbiCoder()
-        let lpTokenDeployerCmd = abiCoder.encode(["uint8", "address"], [118, lpTokenDeployer.address]);
-        await (await dex).connect(await this.auth).protocolCmd(this.COLD_PROXY, lpTokenDeployerCmd, false)
+        let setLpTokenDeployerCmd = abiCoder.encode(["uint8", "address"], [118, lpTokenDeployer.address]);
+        await (await dex).connect(await this.auth).protocolCmd(this.COLD_PROXY, setLpTokenDeployerCmd, false)
 
         return upgradeableBeacon;
     }

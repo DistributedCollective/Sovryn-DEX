@@ -29,7 +29,7 @@ describe('Pool Conduit', () => {
        await test.initPool(feeRate, 0, 1, 1.5)
        test.useHotPath = true
 
-       const conduitAddress = await (await test.query).queryPoolLpToken(baseToken.address, quoteToken.address, test.poolIdx);
+       const conduitAddress = await (await test.query).queryPoolLpTokenAddress(baseToken.address, quoteToken.address, test.poolIdx);
        conduit = await ethers.getContractAt("SdexLpErc20", conduitAddress) as MockLpConduit;
     //    let factory = await ethers.getContractFactory("MockLpConduit") as ContractFactory
     //    conduit = (await factory.deploy(true)) as MockLpConduit
