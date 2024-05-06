@@ -351,7 +351,7 @@ contract ColdPath is MarketSequencer, DepositDesk, ProtocolAccount {
     }
 
     /**
-     * @dev Set / attach specficic lp token to the particular pool
+     * @dev Set / attach LP token to the pool
      * @param input bytes that contains of:
         - protocol action code
         - base token
