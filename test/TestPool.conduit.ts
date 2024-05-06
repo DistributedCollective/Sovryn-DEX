@@ -75,6 +75,7 @@ describe('Pool Conduit', () => {
         // expect(await conduit.liqSnap_()).to.gt(7950*1024)
     })
 
+    /** @note this test is not 100% needed consider our current lp token flow, hence might need to revisit this and refactor the test accordingly  */
     // it("mint concentrated", async() => {
     //     await test.testMint(-25000, 85000, 5000)
     //     expect(await conduit.hashMatches(baseToken.address, quoteToken.address, POOL_IDX)).to.be.true
