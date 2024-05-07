@@ -47,8 +47,8 @@ async function install() {
     // Install cold path proxy
     cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.cold, COLD_PROXY_IDX])
     console.log("Install cold path:", cmd)
-    await traceContractTx(policy.treasuryResolution(
-        addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install cold path")
+    // await traceContractTx(policy.treasuryResolution(
+    //    addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install cold path")
 
     cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.long, LONG_PROXY_IDX])
     console.log("Install long path:", cmd)
