@@ -11,7 +11,6 @@ contract SdexLpTokenDeployer is Ownable {
     using Address for address;
     address public immutable lpTokenBeaconAddress;
 
-    event LpTokenBeaconSet (address indexed oldLpTokenBeaconAddress, address indexed newLpTokenBeaconAddress);
     event LpTokenCreated(address indexed base, address indexed quote, uint256 poolIdx, address sdex, address lpTokenAddress);
 
     constructor(address _lpTokenBeaconAddress) {
