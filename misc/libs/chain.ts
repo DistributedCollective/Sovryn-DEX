@@ -69,7 +69,7 @@ export function initChain (chainId?: string):
 
     const provider = new JsonRpcProvider(rpcUrl)
     const key = process.env.WALLET_KEY as string
-    const wallet = new Wallet(key.toLowerCase()).connect(provider)
+    const wallet = key ? new Wallet(key.toLowerCase()).connect(provider) : ethers.getSigners()[0];
 
     return { addrs, wallet, chainId, poolParams, poolConfigs, lpTokenConfigs }
 }
