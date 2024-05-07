@@ -7,8 +7,6 @@ import "../interfaces/ISdexLpConduit.sol";
 import "../interfaces/ISdexMinion.sol";
 import { ERC20Upgradeable } from "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
 import { IERC20MetadataUpgradeable } from "@openzeppelin/contracts-upgradeable/interfaces/IERC20MetadataUpgradeable.sol";
-import { IERC20MetadataUpgradeable } from "@openzeppelin/contracts-upgradeable/interfaces/IERC20MetadataUpgradeable.sol";
-
 import { Address } from "@openzeppelin/contracts/utils/Address.sol";
 
 contract SdexLpErc20 is ERC20Upgradeable, ISdexLpConduit {
