@@ -47,7 +47,7 @@ async function install() {
     addrs.swapBypass = (await inflateAddr("SdexSwapRouterBypass", addrs.swapBypass || "", authority, addrs.dex)).address
     //console.log(addrs)
 
-    addrs.safeMode = (await inflateAddr("SafeModePath", addrs.safeMode, authority)).address
+    addrs.safeMode = (await inflateAddr("SafeModePath", addrs.safeMode || "", authority)).address
     //console.log(addrs)
 
     console.log(addrs)

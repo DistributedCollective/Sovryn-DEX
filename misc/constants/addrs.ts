@@ -18,7 +18,7 @@ export interface SdexAddrs {
     swapBypass?: string,
     policyShell: string,
     deployer: string,
-    safeMode: string,
+    safeMode?: string,
     govern: SdexGovAddrs,
 }
 
