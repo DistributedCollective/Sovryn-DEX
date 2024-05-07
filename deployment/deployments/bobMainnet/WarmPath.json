@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
   "contractName": "WarmPath",
-  "address": "0x16cB0FCB2fBe598e9a314DF66612f1b14be54381",
+  "address": "0xc442ce6a859d3155B4c1347dD424ad11a936f560",
   "sourceName": "contracts/callpaths/WarmPath.sol",
   "abi": [
     {
