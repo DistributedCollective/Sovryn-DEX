@@ -81,6 +81,7 @@ async function install() {
     //     addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install knockout cross proxy path")
 
     cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.safeMode, SAFE_MODE_PROXY_PATH])
+    console.log("Install safe mode proxy path:", cmd)
     // await traceContractTx(policy.treasuryResolution(
     //     addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install Safe mode proxy path")
 
