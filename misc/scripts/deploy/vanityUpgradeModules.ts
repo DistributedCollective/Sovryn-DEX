@@ -98,7 +98,7 @@ async function install() {
     cmd = abi.encode(["uint8", "address"],
         [118, (await get("SdexLpTokenDeployer")).address])
     await traceContractTx(policy.opsResolution(addrs.dex, COLD_PROXY_IDX, 
-        cmd, txArgs), "Register pool lp token")
+        cmd, txArgs), "Register pool lp token deployer")
 }
 
 install()

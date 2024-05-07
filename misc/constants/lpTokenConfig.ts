@@ -279,7 +279,7 @@ export const bobTestnetLpTokenConfigs: ISdexLpTokenInfo[] = [
             isNativeToken: false,
         },
         lpTokenAddress: "0xdf3E204f251fBA7d2830f7650e93E4D0Ff326c66",
-        poolIdx: 36000,
+        poolIdx: 37000,
     },
     {
         baseToken: {
@@ -409,7 +409,237 @@ export const bobTestnetLpTokenConfigs: ISdexLpTokenInfo[] = [
     },
 ]
 
+export const sepoliaLpTokenConfigs: ISdexLpTokenInfo[] = [
+    {
+        baseToken: {
+            tokenSymbol: "USDC",
+            tokenDeploymentName: "MOCK_USDC",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "USDT",
+            tokenDeploymentName: "MOCK_USDT",
+            isNativeToken: false,
+        },
+        poolIdx: 36000,
+        lpTokenAddress: "0x48E5EBE5B2Cf7ED1b40234CFBB76F4E107145897"
+    },
+    {
+        baseToken: {
+            tokenSymbol: "DAI",
+            tokenDeploymentName: "MOCK_DAI",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "eDLLR",
+            tokenDeploymentName: "MOCK_DLLR",
+            isNativeToken: false,
+        },
+        lpTokenAddress: "0x64f834303f65e62ba53F3D182EF1d86C993bcC9F",
+        poolIdx: 36000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "USDT",
+            tokenDeploymentName: "MOCK_USDT",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "DLLR",
+            tokenDeploymentName: "MOCK_DLLR",
+            isNativeToken: false,
+        },
+        lpTokenAddress: "0x032d19fAEcC286143F983e4af49eC0c8bb86E067",
+        poolIdx: 36000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "tBTC",
+            tokenDeploymentName: "MOCK_tBTC",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "WBTC",
+            tokenDeploymentName: "MOCK_WBTC",
+            isNativeToken: false,
+        },
+        lpTokenAddress: "0x2167635648024324b43Ca0799Ed6391bBb0A10b5",
+        poolIdx: 36000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "rETH",
+            tokenDeploymentName: "MOCK_rETH",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "ETH",
+            tokenDeploymentName: "ETH",
+            isNativeToken: true,
+        },
+        lpTokenAddress: "0xe82E144B8E5453A8b079a1C8be7CDc754B7eB3fE",
+        poolIdx: 36000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "wstETH",
+            tokenDeploymentName: "MOCK_WSTETH",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "ETH",
+            tokenDeploymentName: "ETH",
+            isNativeToken: true,
+        },
+        lpTokenAddress: "0x7e40E587f22A0b415c23f8b5c41ed1033b7385bA",
+        poolIdx: 36000,
+    },
+
+    // SOV Pairs
+    {
+        baseToken: {
+            tokenSymbol: "DLLR",
+            tokenDeploymentName: "MOCK_DLLR",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        lpTokenAddress: "0xBbe7799C79a27988d323d7487258A87DF323f063",
+        poolIdx: 37000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "USDT",
+            tokenDeploymentName: "MOCK_USDT",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        lpTokenAddress: "0x6dFF4382911497A3fB6eC457b2f66E225EA474C6",
+        poolIdx: 37000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "USDC",
+            tokenDeploymentName: "MOCK_USDC",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        lpTokenAddress: "0x2E29C37c99EAf6e20de95E14B34ef6152Ef12D7B",
+        poolIdx: 37000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "DAI",
+            tokenDeploymentName: "MOCK_DAI",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        lpTokenAddress: "0x8bc8FF0e1f679c5eE6E387468155336948185162",
+        poolIdx: 37000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "WBTC",
+            tokenDeploymentName: "MOCK_WBTC",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        lpTokenAddress: "0x5D01a0169840049a9c799a15795dd3F3127c696E",
+        poolIdx: 37000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "TBTC",
+            tokenDeploymentName: "MOCK_tBTC",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        lpTokenAddress: "0xcF21caD95135EB2C8bAC10DAf076A6479691A608",
+        poolIdx: 37000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "ETH",
+            tokenDeploymentName: "ETH",
+            isNativeToken: true,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        lpTokenAddress: "0xF6a38ed36db6fb6814981c353d6B8933e0dca925",
+        poolIdx: 37000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "wstETH",
+            tokenDeploymentName: "MOCK_WSTETH",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        lpTokenAddress: "0xd3aDc67e27B532CB05fB2f76dbdEaE7014087655",
+        poolIdx: 37000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "rETH",
+            tokenDeploymentName: "MOCK_rETH",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        lpTokenAddress: "0xF1cD5D44FE82AC153e469E1385329007503B1Acd",
+        poolIdx: 37000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "POWA",
+            tokenDeploymentName: "MOCK_POWA",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "MOCK_SOV",
+            isNativeToken: false,
+        },
+        lpTokenAddress: "0x105313EFc5Eb98C87709fF95F9E82369C02B56db",
+        poolIdx: 38000,
+    },
+]
+
 export const SDEX_LP_TOKEN_CONFIGS = {
     '0x6f': bobTestnetLpTokenConfigs, //bob testnet
     '0xed88': bobMainnetLpTokenConfigs, // @todo change to bobMainnetPoolConfigs for real token deployment
+    '0xaa36a7' : sepoliaLpTokenConfigs,
 }
