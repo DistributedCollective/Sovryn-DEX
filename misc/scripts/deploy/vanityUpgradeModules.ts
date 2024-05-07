@@ -1,7 +1,7 @@
 /* Installs the major sidecar proxy contracts to SdexSwapDex through SdexPolicy
  * calls. */
 import { ColdPath, SdexPolicy, SdexSwapDex } from '../../../typechain';
-import { COLD_PROXY_IDX, BOOT_PROXY_IDX, FLAG_CROSS_PROXY_IDX, KNOCKOUT_LP_PROXY_IDX, LONG_PROXY_IDX, LP_PROXY_IDX, MICRO_PROXY_IDX, SWAP_PROXY_IDX } from '../../constants/addrs';
+import { COLD_PROXY_IDX, BOOT_PROXY_IDX, FLAG_CROSS_PROXY_IDX, KNOCKOUT_LP_PROXY_IDX, LONG_PROXY_IDX, LP_PROXY_IDX, MICRO_PROXY_IDX, SWAP_PROXY_IDX, SAFE_MODE_PROXY_PATH } from '../../constants/addrs';
 import { inflateAddr, initChain, refContract, traceContractTx, traceTxResp } from '../../libs/chain';
 import { AbiCoder } from '@ethersproject/abi';
 import hre from "hardhat"
@@ -72,6 +72,10 @@ async function install() {
     cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.koCross, FLAG_CROSS_PROXY_IDX])
     await traceContractTx(policy.treasuryResolution(
         addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install knockout cross proxy path")
+
+    cmd = abi.encode(["uint8", "address", "uint16"], [21, addrs.safeMode, SAFE_MODE_PROXY_PATH])
+    await traceContractTx(policy.treasuryResolution(
+        addrs.dex, BOOT_PROXY_IDX, cmd, true, txArgs), "Install Safe mode proxy path")
 
 
     // register lp token

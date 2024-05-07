@@ -19,6 +19,7 @@ export interface SdexAddrs {
     policyShell: string,
     deployer: string,
     govern: SdexGovAddrs,
+    safeMode?: string,
 }
 
 export interface SdexGovAddrs {
@@ -57,6 +58,7 @@ const emptyAddrs: SdexAddrs = {
   govern: emptyGovAddrs,
   swapRouter: "",
   swapBypass: "",
+  safeMode: "",
 }
 
 // Mock used in local forks
@@ -103,8 +105,9 @@ const bobMainnetAddrs: SdexAddrs = {
     timelockOps: '',
     timelockEmergency: ''
   },
-  swapRouter: "0x9f93D654a1cdC128c27F99Af5452b26d8002e607",
-  swapBypass: "0x7b96cC2256e94348a678B554e2fC648D13b1560E",
+  swapRouter: '0x9f93D654a1cdC128c27F99Af5452b26d8002e607',
+  swapBypass: '0x7b96cC2256e94348a678B554e2fC648D13b1560E',
+  safeMode: '',
 }
 
 const bobTestnetAddrs: SdexAddrs = {
@@ -129,7 +132,8 @@ const bobTestnetAddrs: SdexAddrs = {
     timelockTreasury: '',
     timelockOps: '',
     timelockEmergency: ''
-  }
+  },
+  safeMode: '',
 }
 
 const tenderlyVirtualNetworkAddrs: SdexAddrs = {
@@ -156,7 +160,8 @@ const tenderlyVirtualNetworkAddrs: SdexAddrs = {
     timelockEmergency: ''
   },
   swapRouter: '',
-  swapBypass: ''
+  swapBypass: '',
+  safeMode: '',
 }
 
 const sepoliaAddrs: SdexAddrs = {
@@ -183,7 +188,8 @@ const sepoliaAddrs: SdexAddrs = {
     timelockEmergency: ''
   },
   swapRouter: '0xbF78d668a90Eac8C1a247C631a07dcC169428658',
-  swapBypass: '0x18Ca1b9F9595D402f1a03b0262288a15760D028C'
+  swapBypass: '0x18Ca1b9F9595D402f1a03b0262288a15760D028C',
+  safeMode:'',
 }
 
 const sepoliaForkedAddrs: SdexAddrs = {
