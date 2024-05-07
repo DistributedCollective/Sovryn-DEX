@@ -14,7 +14,17 @@ let nonCoreContracts = [
   "TimelockController",
   "AccessControl",
   "QueryHelper",
-  "StoragePrototypes"
+  "StoragePrototypes",
+  "SdexUpgradeableBeacon",
+  "ContextUpgradeable",
+  "Initializable",
+  "Ownable",
+  "Pausable",
+  "UpgradeableBeacon",
+  "ERC20Upgradeable",
+  "ContextUpgradeable",
+  "SdexSwapRouterBypass",
+  "SdexSwapRouter"
 ]
 
 interface StorageEntry {
