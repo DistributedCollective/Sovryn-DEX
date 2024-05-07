@@ -18,8 +18,8 @@ export interface SdexAddrs {
     swapBypass?: string,
     policyShell: string,
     deployer: string,
+    safeMode: string,
     govern: SdexGovAddrs,
-    safeMode?: string,
 }
 
 export interface SdexGovAddrs {
@@ -84,15 +84,15 @@ const mockAddrs: SdexAddrs = {
 
 const bobMainnetAddrs: SdexAddrs = {
   dex: '0xe5bc234A484A912A61Aa74501960cFc202e773dA',
-  cold: '0xA17B99B2817d0EdD992fE00D219DEc2b9835742d',
-  warm: '0xc442ce6a859d3155B4c1347dD424ad11a936f560',
-  long: '0x7B794a3101594EC9aF48eF505E9f18DFbe966315',
-  micro: '0x3beb724c3c2b8ae0DfCe74015B21f6cf962D9881',
-  hot: '0xdC3e5232db60088D67aA7AF10595979D7eB5290f',
-  knockout: '0x67bF6DE7f8d4d13FBa410CBe05219cB26242A7C9',
-  koCross: '0xa98320ac64923049f1b56c943656f30026402c64',
+  cold: '0x4AC1fda4171bC77cf23Be54529E0CF135f6b9B93',
+  warm: '0xFA57d9d1Db4676099e67215906f2F681d7730882',
+  long: '0x44F220aa5434901E92b0B9F1D1F3Be068BA29099',
+  micro: '0x2D4C9B0A213a61ef0ce2a6D5eB6101C63404F173',
+  hot: '0xf01621D8ae78Ba9349ebF417a02FeD6f28A5798E',
+  knockout: '0x9b17A13D396b9Ca36B493729dD05b076e1f18E83',
+  koCross: '0xa65B8E861c5e7672013cDD05853915C6f24ce19D',
   policy: '0x22Bdd8B71928003473EfA83cd69689cc04507cd9',
-  query: '0xf1e7167A0b085B52A8ad02A5Cc48eD2027b8B577',
+  query: '0x1dff4Ff93dF17Ad6F44E23368341CcFb8fB8B675',
   impact: '0x30B2a8810B091D1DbE4aAA4905141f815586e274',
   shell: '',
   policyShell: '',
@@ -107,7 +107,7 @@ const bobMainnetAddrs: SdexAddrs = {
   },
   swapRouter: '0x9f93D654a1cdC128c27F99Af5452b26d8002e607',
   swapBypass: '0x7b96cC2256e94348a678B554e2fC648D13b1560E',
-  safeMode: '',
+  safeMode: '0x6087EbE47fb43Fd56fA71eDe6f9035b777F21862'
 }
 
 const bobTestnetAddrs: SdexAddrs = {
