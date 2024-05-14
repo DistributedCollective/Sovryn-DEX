@@ -881,6 +881,20 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
         initialRate: 1824,
         poolIdx: 410,
     },
+    {
+        baseToken: {
+            tokenSymbol: "POWA",
+            tokenDeploymentName: "POWA",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "SOV",
+            isNativeToken: false,
+        },
+        initialRate: 0.000001502890173410, // @todo initial rate
+        poolIdx: 420,
+    },
 ]
 
 export const SDEX_POOL_CONFIGS = {
