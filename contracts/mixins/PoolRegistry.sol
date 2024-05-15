@@ -7,6 +7,7 @@ import '../libraries/PoolSpecs.sol';
 import '../libraries/PriceGrid.sol';
 import '../interfaces/ISdexPermitOracle.sol';
 import './StorageLayout.sol';
+import { Address } from "@openzeppelin/contracts/utils/Address.sol";
 
 /* @title Pool registry mixin
  * @notice Provides a facility for registering and querying pool types on pairs and
@@ -14,6 +15,7 @@ import './StorageLayout.sol';
 contract PoolRegistry is StorageLayout {
     using PoolSpecs for uint8;
     using PoolSpecs for PoolSpecs.Pool;
+    using Address for address;
 
     uint8 constant SWAP_ACT_CODE = 1;
     uint8 constant MINT_ACT_CODE = 2;
@@ -340,5 +342,29 @@ contract PoolRegistry is StorageLayout {
         private pure returns (bool) {        
         require(pool.head_.schema_ <= PoolSpecs.BASE_SCHEMA, "IPS");
         return pool.head_.schema_ == PoolSpecs.BASE_SCHEMA;
+    }
+
+    /**
+     * @dev Set / attach the pool LP token to the pool
+     * @param base base token address
+     * @param quote quote token address
+     * @param poolIdx pool template id
+     * @param lpToken lp token address
+     */
+    function setPoolLpToken (address base, address quote, uint256 poolIdx, address lpToken) internal {
+        require(lpToken.isContract(), "Invalid lpToken");
+        bytes32 poolHash = PoolSpecs.encodeKey(base, quote, poolIdx);
+        require(poolLpTokens[poolHash] == address(0), "EPL");
+
+        poolLpTokens[poolHash] = lpToken;
+    }
+
+    /**
+     * @dev set lp token deployer address 
+     * @param newLpTokenDeployerAddress new LP token deployer address
+     */
+    function setLpTokenDeployerAddress (address newLpTokenDeployerAddress) internal {
+        require(newLpTokenDeployerAddress.isContract(), "Invalid lpToken deployer address");
+        lpTokenDeployerAddress = newLpTokenDeployerAddress;
     }
 }

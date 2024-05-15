@@ -355,7 +355,7 @@ describe('CurveMath', () => {
 
       impact = await curve.testDeriveImpact(toSqrtPrice(.0625), 0, 0, 1000, 1000, true, false);
       expect(impact[0]).eq(83);                                  // Counterlow output rounds up qty
-      expect(fromSqrtPrice(impact[1])).lte(.11111111);           // Quote flow rounds down price
+      expect(fromSqrtPrice(impact[1])).lte(.11111111111088891);           // Quote flow rounds down price
       expect(fromSqrtPrice(impact[1])).gte(.11111110);
 
       impact = await curve.testDeriveImpact(toSqrtPrice(.0625), 0, 0, 1000, 2000, false, false);

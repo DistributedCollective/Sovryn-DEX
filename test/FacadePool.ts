@@ -189,7 +189,10 @@ export class TestPool {
 
         factory = ethers.getContractFactory("SdexSwapDexSeed")
         if (dex) {
-            this.dex = Promise.resolve(dex)
+            this.dex = Promise.resolve(dex).then(d => {
+                this.setupLpTokenBeaconAddress(d)
+                return d;
+            })
         } else {
             this.dex = buildSdexSwapDex(this.auth)
         }
@@ -238,6 +241,8 @@ export class TestPool {
         let overrides = noOverrides ? {} : this.overrides 
 
         await this.setProtocolTake(protoTake)
+
+        await this.setupLpTokenBeaconAddress(await this.dex)
 
         if (this.initTemplBefore) {
             await this.initTempl(feeRate, tickSize, poolIdx)
@@ -878,6 +883,25 @@ export class TestPool {
             order.hops[0].settlement.token = (await this.quote).address
         }
         return order
+    }
+
+    async setupLpTokenBeaconAddress (dex: SdexSwapDex) {
+        // 1. deploy LP token logic
+        // 2. deploy Beacon(lpTokenLogic)
+        // 3. deploy LP tokens Factory LpTokenDeployer(beacon.address)
+        let lpTokenfactory = await ethers.getContractFactory("SdexLpErc20") as ContractFactory;
+        let lpTokenLogic = await lpTokenfactory.deploy();
+        let upgradeableBeaconFactory = await ethers.getContractFactory("SdexUpgradeableBeacon") as ContractFactory
+        let upgradeableBeacon = await upgradeableBeaconFactory.deploy(lpTokenLogic.address, ethers.constants.AddressZero);
+
+        let sdexLpTokenDeployerFactory = await ethers.getContractFactory("SdexLpTokenDeployer")
+        let lpTokenDeployer = await sdexLpTokenDeployerFactory.deploy(upgradeableBeacon.address);
+        
+        let abiCoder = new ethers.utils.AbiCoder()
+        let setLpTokenDeployerCmd = abiCoder.encode(["uint8", "address"], [118, lpTokenDeployer.address]);
+        await (await dex).connect(await this.auth).protocolCmd(this.COLD_PROXY, setLpTokenDeployerCmd, false)
+
+        return upgradeableBeacon;
     }
 
 }

@@ -107,6 +107,7 @@ module.exports = {
         accounts: mainnetAccounts,
         live: true,
         //gasPrice: 50000000,
+        blockGasLimit: 30000000,
       },
 
       bobTestnet: {

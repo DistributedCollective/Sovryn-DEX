@@ -94,4 +94,8 @@ library SdexEvents {
     event SdexMicroBurnAmbient(bytes input, bytes output);
     event SdexMicroBurnRange(bytes input, bytes output);
     event SdexMicroSwap(bytes input, bytes output);
+
+    /** LP Token */
+    event PoolLpTokenSet (address indexed base, address indexed quote, uint256 poolIdx, address indexed lpToken);
+    event LpTokenDeployerSet (address indexed oldLpTokenDeployerAddress, address indexed newLpTokenDeployerAddress);
 }

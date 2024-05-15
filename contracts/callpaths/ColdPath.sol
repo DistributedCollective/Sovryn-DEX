@@ -15,6 +15,7 @@ import '../mixins/ProtocolAccount.sol';
 import '../mixins/DepositDesk.sol';
 import '../interfaces/ISdexMinion.sol';
 import '../SdexEvents.sol';
+import '../interfaces/ISdexLpTokenDeployer.sol';
 
 /* @title Cold path callpath sidecar.
  * @notice Defines a proxy sidecar contract that's used to move code outside the 
@@ -53,6 +54,10 @@ contract ColdPath is MarketSequencer, DepositDesk, ProtocolAccount {
             setNewPoolLiq(cmd);
         } else if (code == ProtocolCmd.OFF_GRID_CODE) {
             pegPriceImprove(cmd);
+        } else if (code == ProtocolCmd.SET_POOL_LP_TOKEN_CODE) {
+            setPoolLpToken(cmd);
+        } else if (code == ProtocolCmd.SET_LP_TOKEN_DEPLOYER_CODE) {
+            setLpTokenDeployerAddress(cmd);
         } else {
             sudoCmd(cmd);
         }
@@ -129,6 +134,11 @@ contract ColdPath is MarketSequencer, DepositDesk, ProtocolAccount {
         
         (int128 baseFlow, int128 quoteFlow) = initCurve(pool, price, initLiq);
         settleInitFlow(lockHolder_, base, baseFlow, quote, quoteFlow);
+
+        /** Create & set LP Token */
+        address lpTokenAddress = ISdexLpTokenDeployer(lpTokenDeployerAddress).deployLpToken(base, quote, poolIdx, address(this));
+        
+        setPoolLpToken(base, quote, poolIdx, lpTokenAddress);
     }
 
     /* @notice Disables an existing pool template. Any previously instantiated pools on
@@ -338,6 +348,37 @@ contract ColdPath is MarketSequencer, DepositDesk, ProtocolAccount {
      *         in the correct slot. */
     function acceptSdexProxyRole (address, uint16 slot) public virtual returns (bool) {
         return slot == SdexSlots.COLD_PROXY_IDX;
+    }
+
+    /**
+     * @dev Set / attach LP token to the pool
+     * @param input bytes that contains of:
+        - protocol action code
+        - base token
+        - quote token
+        - pool template id
+        - lp token address
+     */
+    function setPoolLpToken (bytes calldata input) internal {
+        (, address base, address quote, uint256 poolIdx, address lpToken) = 
+            abi.decode(input, (uint8, address, address, uint256, address));
+        
+        emit SdexEvents.PoolLpTokenSet(base, quote, poolIdx, lpToken);
+        setPoolLpToken(base, quote, poolIdx, lpToken);
+    }
+
+    /**
+     * @dev set lp token deployer address 
+     * @param input bytes that acontains of:
+     * - protocol action code
+     * - new deployer address
+     */
+    function setLpTokenDeployerAddress (bytes calldata input) internal {
+        (, address newLpTokenDeployerAddress) = 
+            abi.decode(input, (uint8, address));
+        
+        emit SdexEvents.LpTokenDeployerSet(lpTokenDeployerAddress, newLpTokenDeployerAddress);
+        setLpTokenDeployerAddress(newLpTokenDeployerAddress);
     }
 }
 

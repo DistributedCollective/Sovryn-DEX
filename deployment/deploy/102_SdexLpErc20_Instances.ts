@@ -63,23 +63,24 @@ const func: DeployFunction = async ({
   
   //@todo set poolIdx - pool template id per pair if needed
   let sdexLpErc20PairsData = [
-    { base: USDT, quote: SOV, poolIdx: poolIdx035 },
-    { base: USDC, quote: SOV, poolIdx: poolIdx035 },
-    { base: wBTC, quote: SOV, poolIdx: poolIdx035 },
-    { base: tBTC, quote: SOV, poolIdx: poolIdx035 },
-    { base: ETH, quote: SOV, poolIdx: poolIdx035 },
-    { base: wstETH, quote: SOV, poolIdx: poolIdx035 },
-    { base: rETH, quote: SOV, poolIdx: poolIdx035 },
-    { base: DAI, quote: SOV, poolIdx: poolIdx035 },
-    { base: DLLR, quote: SOV, poolIdx: poolIdx01 },
-    { base: USDC, quote: USDT, poolIdx: poolIdx01 },
-    { base: USDT, quote: DLLR, poolIdx: poolIdx01 },
-    { base: tBTC, quote: wBTC, poolIdx: poolIdx01 },
-    { base: POWA, quote: SOV, poolIdx: poolIdx05 },
+    { base: USDT, quote: SOV, baseSymbol: "USDT", quoteSymbol: "SOV", poolIdx: poolIdx035 },
+    { base: USDC, quote: SOV, baseSymbol: "USDC", quoteSymbol: "SOV", poolIdx: poolIdx035 },
+    { base: wBTC, quote: SOV, baseSymbol: "wBTC", quoteSymbol: "SOV", poolIdx: poolIdx035 },
+    { base: tBTC, quote: SOV, baseSymbol: "tBTC", quoteSymbol: "SOV", poolIdx: poolIdx035 },
+    { base: ETH, quote: SOV, baseSymbol: "ETH", quoteSymbol: "SOV", poolIdx: poolIdx035 },
+    { base: wstETH, quote: SOV, baseSymbol: "wstETH", quoteSymbol: "SOV", poolIdx: poolIdx035 },
+    { base: rETH, quote: SOV, baseSymbol: "rETH", quoteSymbol: "SOV", poolIdx: poolIdx035 },
+    { base: DAI, quote: SOV, baseSymbol: "DAI", quoteSymbol: "SOV", poolIdx: poolIdx035 },
+    { base: DLLR, quote: SOV, baseSymbol: "DLLR", quoteSymbol: "SOV", poolIdx: poolIdx01 },
+    { base: USDC, quote: USDT, baseSymbol: "USDC", quoteSymbol: "USDT", poolIdx: poolIdx01 },
+    { base: USDT, quote: DLLR, baseSymbol: "USDT", quoteSymbol: "DLLR", poolIdx: poolIdx01 },
+    { base: tBTC, quote: wBTC, baseSymbol: "tBTC", quoteSymbol: "wBTC", poolIdx: poolIdx01 },
+    { base: POWA, quote: SOV, baseSymbol: "POWA", quoteSymbol: "SOV", poolIdx: poolIdx05 },
   ].map(
-    ({ base, quote, poolIdx }) => {
+    ({ base, quote, baseSymbol, quoteSymbol,poolIdx }) => {
       if (compareAddresses(base, quote) > 0) {
-        quote = [base, base = quote][0];
+        [quote, base] = [base, quote];
+        [quoteSymbol, baseSymbol] = [baseSymbol, quoteSymbol];
       }
       const encodedData = logicDeploymentAbi.encodeFunctionData(
         "initialize",
@@ -92,16 +93,18 @@ const func: DeployFunction = async ({
       );
       
       return {
-        base: base,
-        quote: quote,
-        poolIdx: poolIdx,
+        baseSymbol,
+        quoteSymbol,
+        base,
+        quote,
+        poolIdx,
         data: encodedData
       };
   })
 
   for (const item of sdexLpErc20PairsData) {
-    const beaconProxyName = "SdexLpErc20BeaconProxy_" + item.base + "-" + item.quote + "-" + item.poolIdx;
-    const deploymentInstanceName = "SdexLpErc20_" + item.base + "-" + item.quote + "-" + item.poolIdx;
+    const beaconProxyName = "SdexLpErc20BeaconProxy_" + item.baseSymbol.toUpperCase() + "-" + item.quoteSymbol.toUpperCase() + "-" + item.poolIdx;
+    const deploymentInstanceName = "SdexLpErc20_" + item.baseSymbol.toUpperCase() + "-" + item.quoteSymbol.toUpperCase() + "-" + item.poolIdx;
     const deployResult = await deploy(beaconProxyName, {
       contract: "SdexBeaconProxy",
       from: deployer,
@@ -123,6 +126,6 @@ const func: DeployFunction = async ({
 };
 
 func.tags = ["LpErc20TokenInstances"];
-func.dependencies = ["BeaconSdexLpErc20"]
+//func.dependencies = ["BeaconSdexLpErc20"]
 
 export default func;

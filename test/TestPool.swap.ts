@@ -11,6 +11,11 @@ import { TransactionResponse } from '@ethersproject/providers';
 
 chai.use(solidity);
 
+/** 
+ * NOTE: If you faced any memory issue for running this test, can try to run the below command
+ * export NODE_OPTIONS=--max_old_space_size=4096
+ * Or can try to commented out this test, and run it separately
+ */
 describe('Pool Swap', () => {
     let test: TestPool
     let baseToken: Token

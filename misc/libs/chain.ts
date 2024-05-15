@@ -5,6 +5,7 @@ import { SdexAddrs, SDEX_ADDRS } from "../constants/addrs";
 import { SdexPoolParams, SDEX_POOL_PARAMS } from "../constants/poolParams";
 import { RPC_URLS } from "../constants/rpcs";
 import { ISdexPoolInfo, SDEX_POOL_CONFIGS } from "../constants/poolConfig";
+import { ISdexLpTokenInfo, SDEX_LP_TOKEN_CONFIGS } from "../constants/lpTokenConfig";
 
 export async function traceContractDeploy 
     (deployTx: Promise<Contract>, tag: string): Promise<Contract> {
@@ -58,18 +59,19 @@ export async function refContract (contractName: string, addr: string,
 }
 
 export function initChain (chainId?: string): 
-    { wallet: Wallet, addrs: SdexAddrs, chainId: string, poolParams: SdexPoolParams, poolConfigs: ISdexPoolInfo[] } {
+    { wallet: Wallet, addrs: SdexAddrs, chainId: string, poolParams: SdexPoolParams, poolConfigs: ISdexPoolInfo[], lpTokenConfigs: ISdexLpTokenInfo[] } {
     chainId = chainId || process.env.CHAIN_ID || 'mock';
     const addrs = SDEX_ADDRS[chainId as keyof typeof SDEX_ADDRS]
     const rpcUrl = RPC_URLS[chainId as keyof typeof RPC_URLS]
     const poolParams = SDEX_POOL_PARAMS[chainId as keyof typeof SDEX_POOL_PARAMS]
     const poolConfigs = SDEX_POOL_CONFIGS[chainId as keyof typeof SDEX_POOL_CONFIGS]
+    const lpTokenConfigs = SDEX_LP_TOKEN_CONFIGS[chainId as keyof typeof SDEX_LP_TOKEN_CONFIGS]
 
     const provider = new JsonRpcProvider(rpcUrl)
     const key = process.env.WALLET_KEY as string
-    const wallet = new Wallet(key.toLowerCase()).connect(provider)
+    const wallet = key ? new Wallet(key.toLowerCase()).connect(provider) : ethers.getSigners()[0];
 
-    return { addrs, wallet, chainId, poolParams, poolConfigs }
+    return { addrs, wallet, chainId, poolParams, poolConfigs, lpTokenConfigs }
 }
 
 export function initProvider (chainId?: string): 

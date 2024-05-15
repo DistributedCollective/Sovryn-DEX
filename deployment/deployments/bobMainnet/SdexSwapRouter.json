@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
   "contractName": "SdexSwapRouter",
-  "address": "0x3F1cE244F286e9e16B68cd117b07A7c4a8bf815e",
+  "address": "0x9f93D654a1cdC128c27F99Af5452b26d8002e607",
   "sourceName": "contracts/periphery/SdexSwapRouter.sol",
   "abi": [
     {

@@ -18,6 +18,7 @@ export interface SdexAddrs {
     swapBypass?: string,
     policyShell: string,
     deployer: string,
+    safeMode?: string,
     govern: SdexGovAddrs,
 }
 
@@ -57,6 +58,7 @@ const emptyAddrs: SdexAddrs = {
   govern: emptyGovAddrs,
   swapRouter: "",
   swapBypass: "",
+  safeMode: "",
 }
 
 // Mock used in local forks
@@ -82,15 +84,15 @@ const mockAddrs: SdexAddrs = {
 
 const bobMainnetAddrs: SdexAddrs = {
   dex: '0xe5bc234A484A912A61Aa74501960cFc202e773dA',
-  cold: '0xA17B99B2817d0EdD992fE00D219DEc2b9835742d',
-  warm: '0xc442ce6a859d3155B4c1347dD424ad11a936f560',
-  long: '0x7B794a3101594EC9aF48eF505E9f18DFbe966315',
-  micro: '0x3beb724c3c2b8ae0DfCe74015B21f6cf962D9881',
-  hot: '0xdC3e5232db60088D67aA7AF10595979D7eB5290f',
-  knockout: '0x67bF6DE7f8d4d13FBa410CBe05219cB26242A7C9',
-  koCross: '0xa98320ac64923049f1b56c943656f30026402c64',
+  cold: '0x4AC1fda4171bC77cf23Be54529E0CF135f6b9B93',
+  warm: '0xFA57d9d1Db4676099e67215906f2F681d7730882',
+  long: '0x44F220aa5434901E92b0B9F1D1F3Be068BA29099',
+  micro: '0x2D4C9B0A213a61ef0ce2a6D5eB6101C63404F173',
+  hot: '0xf01621D8ae78Ba9349ebF417a02FeD6f28A5798E',
+  knockout: '0x9b17A13D396b9Ca36B493729dD05b076e1f18E83',
+  koCross: '0xa65B8E861c5e7672013cDD05853915C6f24ce19D',
   policy: '0x22Bdd8B71928003473EfA83cd69689cc04507cd9',
-  query: '0xf1e7167A0b085B52A8ad02A5Cc48eD2027b8B577',
+  query: '0x1dff4Ff93dF17Ad6F44E23368341CcFb8fB8B675',
   impact: '0x30B2a8810B091D1DbE4aAA4905141f815586e274',
   shell: '',
   policyShell: '',
@@ -103,21 +105,22 @@ const bobMainnetAddrs: SdexAddrs = {
     timelockOps: '',
     timelockEmergency: ''
   },
-  swapRouter: "0x9f93D654a1cdC128c27F99Af5452b26d8002e607",
-  swapBypass: "0x7b96cC2256e94348a678B554e2fC648D13b1560E",
+  swapRouter: '0x9f93D654a1cdC128c27F99Af5452b26d8002e607',
+  swapBypass: '0x7b96cC2256e94348a678B554e2fC648D13b1560E',
+  safeMode: '0x6087EbE47fb43Fd56fA71eDe6f9035b777F21862'
 }
 
 const bobTestnetAddrs: SdexAddrs = {
   dex: '0xA86F239490bd35923eCBD578C2A8989803294bee',
-  cold: '0x9be3Fe2420EE934156CC55817a97b79454596403',
-  warm: '0xd5d7c42D3de2c9cF1245a9889e823Ce6e75C4391',
-  long: '0x132Ff2e340e1653946EC53125a9131C9269a40c3',
-  micro: '0xeFF6b1dD5E8c11a59554084AE36506a28fc3F6e8',
-  hot: '0x5c7bEa38BD9d825212a1BCf0cCA4b9C122f6Bd00',
-  knockout: '0x59c4DBa2F8413e02455A60Af1AF6CbD37d710735',
-  koCross: '0x9228378287e43eFe94890D8d0C47deBCBe54F7F3',
+  cold: '0x2D4C9B0A213a61ef0ce2a6D5eB6101C63404F173',
+  warm: '0x16cB0FCB2fBe598e9a314DF66612f1b14be54381',
+  long: '0xea9adAbDf9D39923cD9B7609d6597a0F4146fb1B',
+  micro: '0x1eEDE17D8708f2bAa7A421BFE346E7c7262F9f1e',
+  hot: '0xFA57d9d1Db4676099e67215906f2F681d7730882',
+  knockout: '0x1dff4Ff93dF17Ad6F44E23368341CcFb8fB8B675',
+  koCross: '0x6087EbE47fb43Fd56fA71eDe6f9035b777F21862',
   policy: '0x8aC0bf8dd950616878A6466c5B1E7e291403a5a6',
-  query: '0x9d9Fd4127E988B95E25F058cf11B274ffA98801E',
+  query: '0x35a4dd53C1AEd1AFD48659175ab3981f3C39493F',
   impact: '0xdB0Bb1e4b7aA5a747E17957FC66C772cea089ec5',
   shell: '',
   policyShell: '',
@@ -129,7 +132,8 @@ const bobTestnetAddrs: SdexAddrs = {
     timelockTreasury: '',
     timelockOps: '',
     timelockEmergency: ''
-  }
+  },
+  safeMode: '',
 }
 
 const tenderlyVirtualNetworkAddrs: SdexAddrs = {
@@ -156,20 +160,21 @@ const tenderlyVirtualNetworkAddrs: SdexAddrs = {
     timelockEmergency: ''
   },
   swapRouter: '',
-  swapBypass: ''
+  swapBypass: '',
+  safeMode: '',
 }
 
 const sepoliaAddrs: SdexAddrs = {
   dex: '0xad2Ef29985c20d5980dE28c3CbBD0355AB29F9A4',
-  cold: '0xaDB7dCC11EE934E44BeAa66A324d55e57CEC33F4',
-  warm: '0xb377e2cF944F5Cc174aa8FE5d4Aaf3f7e56Ec63e',
-  long: '0x0C9F706449241ab5E6218ea6aE5B107787F4D150',
-  micro: '0xb73B2F12a0bc161010D1aAcADAD61C1b1b92F3a4',
-  hot: '0x238A1174f1D788D3d47fd51499DFFaECd0C50478',
-  knockout: '0x2B8D05B69FC017FA00cB152499bE459DF3C97742',
-  koCross: '0xdaBAeAc51Faf71abb715C2039DCa95896B523616',
+  cold: '0x45d9cFf7c9071b20395DFd67e1194DB3094b0B51',
+  warm: '0x84bD0D81001235cF8A0A863D289a79F43299619D',
+  long: '0x3Fbaa86eda2aCD02702581b30cD331725C3C1fF1',
+  micro: '0xF5F70ab084E3799AFEE43830EA2be06F3F4064AE',
+  hot: '0x581f657AD3430b52754DDcC604cf73Bc8C55bED9',
+  knockout: '0xc3E104dEE1A8716c457d2D6d6BdeF0651BBd3787',
+  koCross: '0xfEE24294a8dE378E5d7B1F6004E900C864a5A998',
   policy: '0x4B319A82a0064944adaA4373b93e3e264D9067c0',
-  query: '0xa3Ede3d94493BA944715a036833c0D6E36E0c52c',
+  query: '0x0E0BA5F71a7CC8EF067d82c03A8cd7761f4810cd',
   impact: '0x8AC7f31B587A2369C985b05627873cFA50C70a3C',
   shell: '',
   policyShell: '',
@@ -183,7 +188,8 @@ const sepoliaAddrs: SdexAddrs = {
     timelockEmergency: ''
   },
   swapRouter: '0xbF78d668a90Eac8C1a247C631a07dcC169428658',
-  swapBypass: '0x18Ca1b9F9595D402f1a03b0262288a15760D028C'
+  swapBypass: '0x18Ca1b9F9595D402f1a03b0262288a15760D028C',
+  safeMode:'',
 }
 
 const sepoliaForkedAddrs: SdexAddrs = {

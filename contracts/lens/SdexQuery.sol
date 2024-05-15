@@ -517,4 +517,18 @@ contract SdexQuery {
         baseQty = uint128(FixedPoint.mulQ64(liq, curvePrice));
         quoteQty = uint128(FixedPoint.divQ64(liq, curvePrice));        
     }
+
+    /* @notice Queries and returns the current pool lp token for a given pool detail. */
+    function queryPoolLpTokenAddress (address base, address quote, uint256 poolIdx) public view returns (address) {
+        bytes32 key = PoolSpecs.encodeKey(base, quote, poolIdx);
+        bytes32 slot = keccak256(abi.encode(key, SdexSlots.POOL_LP_TOKEN_SLOT));
+        uint256 val = SdexSwapDex(dex_).readSlot(uint256(slot));
+        return address(uint160(val));
+    }
+
+    /* @notice Queries the current lp token beacon address */
+    function queryLpTokenDeployerAddress () public view returns (address) {
+        uint256 val = SdexSwapDex(dex_).readSlot(SdexSlots.LP_TOKEN_DEPLOYER_SLOT);
+        return address(uint160(val));
+    }
 }
