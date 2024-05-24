@@ -148,44 +148,39 @@ describe('Pool Governance', () => {
     })
 
     
-    it("collect treasury", async() => {
+    it("successfully collect treasury without time delay", async() => {
       await test.testRevisePool(feeRate, 128, 1) // Turn on protocol fee
-      await pool.connect(await test.auth).protocolCmd(test.COLD_PROXY, transferCmd(policy.address), true)
+      await pool.connect(await test.auth).protocolCmd(test.COLD_PROXY, transferCmd(policy2.address), true)
       await test.testMintAmbient(10000)
       await test.testSwap(true, false, 100000, MAX_PRICE)
 
-      await treasury.treasuryResolution(pool.address, test.COLD_PROXY, treasurySetCmd(policy2.address), true)
-      await hre.ethers.provider.send("evm_increaseTime", [3600*24*7+1]) // 7 days
+      await treasury2.treasuryResolution(pool.address, test.COLD_PROXY, treasurySetCmd(treasury2.address), true)
 
       // Unauthorized attempts to collect treasury
-      await expect(pool.protocolCmd(test.COLD_PROXY, collectCmd(), true)).to.be.reverted
-      await expect(ops.opsResolution(pool.address, test.COLD_PROXY, collectCmd())).to.be.reverted
-      await expect(ops.treasuryResolution(pool.address, test.COLD_PROXY, collectCmd(), true)).to.be.reverted
+      await expect(treasury.userCmd(pool.address, test.COLD_PROXY, collectCmd())).to.be.revertedWith("Only Treasury")
 
       // Successful treasury payout
-      let snap = await (await test.query).querySurplus(policy2.address, baseToken.address)
-      await treasury.treasuryResolution(pool.address, test.COLD_PROXY, collectCmd(), true)
-      expect(await (await test.query).querySurplus(policy2.address, baseToken.address)).to.gt(snap);
+      let snap = await (await test.query).querySurplus(treasury2.address, baseToken.address)
+      await treasury2.userCmd(pool.address, test.COLD_PROXY, collectCmd())
+      expect(await (await test.query).querySurplus(treasury2.address, baseToken.address)).to.gt(snap);
     })
 
-    it("collect treasury time delay", async() => {
+    it("successfully collect treasury with time delay", async() => {
       await test.testRevisePool(feeRate, 128, 1) // Turn on protocol fee
-      await pool.connect(await test.auth).protocolCmd(test.COLD_PROXY, transferCmd(policy.address), true)
+      await pool.connect(await test.auth).protocolCmd(test.COLD_PROXY, transferCmd(policy2.address), true)
       await test.testMintAmbient(10000)
       await test.testSwap(true, false, 100000, MAX_PRICE)
 
-      await treasury.treasuryResolution(pool.address, test.COLD_PROXY, treasurySetCmd(policy2.address), true)
+      await treasury2.treasuryResolution(pool.address, test.COLD_PROXY, treasurySetCmd(treasury2.address), true)
 
-      // Will fail because treasury can only be collected 7 days after treasury address is set
-      await expect(treasury.treasuryResolution(pool.address, test.COLD_PROXY, collectCmd(), true)).to.be.reverted
+      // Unauthorized attempts to collect treasury
+      await expect(treasury.userCmd(pool.address, test.COLD_PROXY, collectCmd())).to.be.revertedWith("Only Treasury")
+
       await hre.ethers.provider.send("evm_increaseTime", [3600*24*6]) // 6 days
-      await expect(treasury.treasuryResolution(pool.address, test.COLD_PROXY, collectCmd(), true)).to.be.reverted      
-      await hre.ethers.provider.send("evm_increaseTime", [3600*24+1]) // One more day... treasury valid
-
       // Successful treasury payout
-      let snap = await (await test.query).querySurplus(policy2.address, baseToken.address)
-      await treasury.treasuryResolution(pool.address, test.COLD_PROXY, collectCmd(), true)
-      expect(await (await test.query).querySurplus(policy2.address, baseToken.address)).to.gt(snap);
+      let snap = await (await test.query).querySurplus(treasury2.address, baseToken.address)
+      await treasury2.userCmd(pool.address, test.COLD_PROXY, collectCmd())
+      expect(await (await test.query).querySurplus(treasury2.address, baseToken.address)).to.gt(snap);
     })
 
 

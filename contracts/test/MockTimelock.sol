@@ -3,6 +3,7 @@
 pragma solidity 0.8.19;
 
 import "../governance/SdexPolicy.sol";
+import "../SdexSwapDex.sol";
 import "hardhat/console.sol";
 
 contract MockTimelock {
@@ -47,4 +48,8 @@ contract MockTimelock {
         return SdexPolicy(policy_).setPolicy(conduit, proxyPath, policy);
     }
 
+    function userCmd (address minion, uint16 proxyPath,
+                            bytes calldata cmd) public {
+        SdexSwapDex(minion).userCmd(proxyPath, cmd);
+    }
 }
