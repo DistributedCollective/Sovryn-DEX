@@ -54,6 +54,14 @@ library ProtocolCmd {
     uint8 constant SET_POOL_LP_TOKEN_CODE = 117;
     // Code to set LP token deployer contract address
     uint8 constant SET_LP_TOKEN_DEPLOYER_CODE = 118;
+    // Code to set Wrapped Native token contract address
+    uint8 constant SET_WRAPPED_NATIVE_TOKEN_CODE = 119;
+    // Code to set Sov token contract address
+    uint8 constant SET_SOV_TOKEN_CODE = 120;
+    // Code to set Sov token contract address
+    uint8 constant SET_SDEX_QUERY_CODE = 121;
+    // Code to set defaultPathConversion (path for swap)
+    uint8 constant SET_DEFAULT_PATH_CONVERSION_CODE = 122;
     ////////////////////////////////////////////////////////////////////////////
 
 

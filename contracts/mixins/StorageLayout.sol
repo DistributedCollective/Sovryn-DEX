@@ -168,6 +168,19 @@ contract StorageLayout {
     mapping(bytes32 => address) internal poolLpTokens;
     address lpTokenDeployerAddress;
     /**************************************************************/
+
+    /**************************************************************/
+    // Swap Default Path Conversion
+    /**************************************************************/
+    
+    /// @dev Defines the defaultPath of conversion swap. This is created to prevent the non-nativeToken pairs returning the shortest path which will not give the best rate.
+    /// Will be used in internal swap.
+    address wrappedNativeTokenAddress;
+    address sovTokenAddress;
+    address sdexQueryAddress;
+    mapping(address => mapping(address => address[])) internal defaultPathConversion;
+
+    /**************************************************************/
 }
 
 /* @notice Contains the storage or storage hash offsets of the fields and sidecars
@@ -196,6 +209,10 @@ library SdexSlots {
     uint constant public POS_MAP_SLOT_72 = 65554;
     uint constant public POOL_LP_TOKEN_SLOT = 65555;
     uint constant public LP_TOKEN_DEPLOYER_SLOT = 65556;
+    uint constant public WRAPPED_NATIVE_TOKEN_SLOT = 65557;
+    uint constant public SOV_TOKEN_SLOT = 65558;
+    uint constant public SDEX_QUERY_SLOT = 65559;
+    uint constant public DEFAULT_PATH_CONVERSION_SLOT = 65560;
 
         
     // The slots of the currently attached sidecar proxy contracts. These are set by

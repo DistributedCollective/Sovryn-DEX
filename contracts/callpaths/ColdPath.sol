@@ -64,6 +64,12 @@ contract ColdPath is MarketSequencer, DepositDesk, ProtocolAccount {
             setPoolLpToken(cmd);
         } else if (code == ProtocolCmd.SET_LP_TOKEN_DEPLOYER_CODE) {
             setLpTokenDeployerAddress(cmd);
+        } else if (code == ProtocolCmd.SET_WRAPPED_NATIVE_TOKEN_CODE) {
+            setWrappedNativeTokenAddress(cmd);
+        } else if (code == ProtocolCmd.SET_SOV_TOKEN_CODE) {
+            setSovTokenAddress(cmd);
+        } else if (code == ProtocolCmd.SET_SDEX_QUERY_CODE) {
+            setSovTokenAddress(cmd);
         } else {
             sudoCmd(cmd);
         }
@@ -91,7 +97,7 @@ contract ColdPath is MarketSequencer, DepositDesk, ProtocolAccount {
 
     }
     
-    function userCmd (bytes calldata cmd) virtual public payable {
+    function userCmd (bytes calldata cmd) virtual public payable returns(bytes memory) {
         uint8 cmdCode = uint8(cmd[31]);
         
         if (cmdCode == UserCmd.INIT_POOL_CODE) {
@@ -115,7 +121,8 @@ contract ColdPath is MarketSequencer, DepositDesk, ProtocolAccount {
         } else if (cmdCode == UserCmd.GATE_ORACLE_COND) {
             checkGateOracle(cmd);
         } else if (cmdCode == UserCmd.COLLECT_TREASURY_CODE) {
-            collectProtocol(cmd);
+            uint256 convertedAmountToWrappedNativeToken = collectProtocol(cmd);
+            return abi.encodePacked(convertedAmountToWrappedNativeToken);
         } else {
             revert("Invalid command");
         }
@@ -248,12 +255,12 @@ contract ColdPath is MarketSequencer, DepositDesk, ProtocolAccount {
     /* @notice Pays out the the protocol fees.
      * @param token The token for which the accumulated fees are being paid out. 
      *              (Or if 0x0 pays out native Ethereum.) */
-    function collectProtocol (bytes calldata cmd) private onlyTreasury {
+    function collectProtocol (bytes calldata cmd) private onlyTreasury returns(uint256) {
         (, address token) = abi.decode(cmd, (uint8, address));
 
         require(block.timestamp >= treasuryStartTime_, "Treasury start");
         emit SdexEvents.ProtocolDividend(token, treasury_);
-        disburseProtocolFees(treasury_, token);
+        return disburseProtocolFees(treasury_, token);
     }
 
     /* @notice Sets the treasury address to receive protocol fees. Once set, the treasury cannot
@@ -384,6 +391,48 @@ contract ColdPath is MarketSequencer, DepositDesk, ProtocolAccount {
         
         emit SdexEvents.LpTokenDeployerSet(lpTokenDeployerAddress, newLpTokenDeployerAddress);
         setLpTokenDeployerAddress(newLpTokenDeployerAddress);
+    }
+
+    /**
+     * @dev set wrapped native token address
+     * @param input bytes that acontains of:
+     * - protocol action code
+     * - new wrappedNativeTokenAddress
+     */
+    function setWrappedNativeTokenAddress (bytes calldata input) internal {
+        (, address newWrappedNativeTokenAddress) = 
+            abi.decode(input, (uint8, address));
+        
+        emit SdexEvents.WrappedNativeTokenAddressSet(wrappedNativeTokenAddress, newWrappedNativeTokenAddress);
+        setWrappedNativeTokenAddress(newWrappedNativeTokenAddress);
+    }
+
+    /**
+     * @dev set sov token address 
+     * @param input bytes that acontains of:
+     * - protocol action code
+     * - new sovTokenAddress
+     */
+    function setSovTokenAddress (bytes calldata input) internal {
+        (, address newSovTokenAddress) = 
+            abi.decode(input, (uint8, address));
+        
+        emit SdexEvents.SovTokenAddressSet(sovTokenAddress, newSovTokenAddress);
+        setSovTokenAddress(newSovTokenAddress);
+    }
+
+    /**
+     * @dev set sdex query address 
+     * @param input bytes that acontains of:
+     * - protocol action code
+     * - new sdexQueryAddress
+     */
+    function setSdexQueryAddress (bytes calldata input) internal {
+        (, address newSdexQueryAddress) = 
+            abi.decode(input, (uint8, address));
+        
+        emit SdexEvents.SdexQueryAddressSet(sovTokenAddress, newSdexQueryAddress);
+        setSdexQueryAddress(newSdexQueryAddress);
     }
 }
 

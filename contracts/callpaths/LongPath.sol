@@ -6,11 +6,13 @@ import '../libraries/Directives.sol';
 import '../libraries/Encoding.sol';
 import '../libraries/TokenFlow.sol';
 import '../libraries/PriceGrid.sol';
+import '../libraries/ProtocolCmd.sol';
 import '../mixins/MarketSequencer.sol';
 import '../mixins/SettleLayer.sol';
 import '../mixins/PoolRegistry.sol';
 import '../mixins/ProtocolAccount.sol';
 import '../mixins/StorageLayout.sol';
+import '../SdexEvents.sol';
 
 /* @title Long path callpath sidecar.
  * @notice Defines a proxy sidecar contract that's used to move code outside the 
@@ -27,6 +29,20 @@ contract LongPath is MarketSequencer, SettleLayer, ProtocolAccount {
     using TokenFlow for TokenFlow.PairSeq;
     using CurveMath for CurveMath.CurveState;
     using Chaining for Chaining.PairFlow;
+    using ProtocolCmd for bytes;
+
+    /* @notice Consolidated method for protocol control related commands. */
+    function protocolCmd (bytes calldata cmd) virtual public {
+        uint8 code = uint8(cmd[31]);
+
+        if (code == ProtocolCmd.SET_DEFAULT_PATH_CONVERSION_CODE) {
+            setDefaultPathConversion(cmd);
+        } else {
+            revert("Invalid command");
+        }
+
+        emit SdexEvents.SdexColdProtocolCmd(cmd);
+    }
 
     /* @notice Executes the user-defined compound order, constitutiin an arbitrary
      *         combination of mints, burns and swaps across an arbitrary set of pools
@@ -109,5 +125,20 @@ contract LongPath is MarketSequencer, SettleLayer, ProtocolAccount {
      *         in the correct slot. */
     function acceptSdexProxyRole (address, uint16 slot) public pure returns (bool) {
         return slot == SdexSlots.LONG_PROXY_IDX;
+    }
+
+    /**
+     * @notice set the defaultPathConversion for internal swap
+     * @dev first index of the decoded defaultPath is the source token address.
+     * @dev last index of the decoded defaultPath is the destination token address.
+     */
+    function setDefaultPathConversion (bytes calldata input) private {
+        (, address[] memory defaultPath) = abi.decode(input, (uint8, address[]));
+        address sourceTokenAddress = address(defaultPath[0]);
+        address destTokenAddress = address(defaultPath[defaultPath.length - 1]);
+
+        emit SdexEvents.SetDefaultPathConversion(sourceTokenAddress, destTokenAddress, defaultPath);
+
+        setDefaultPathConversion(sourceTokenAddress, destTokenAddress, defaultPath);
     }
 }

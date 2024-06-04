@@ -638,6 +638,12 @@ export class TestPool {
         await (await this.dex).connect(await this.auth).protocolCmd(this.COLD_PROXY, takeCmd, false)
     }
 
+    async setDefaultPathConversion (conversionPath: string[]) {
+        let abiCoder = new ethers.utils.AbiCoder()
+        let takeCmd = abiCoder.encode(["uint8", "address[]"], [122, conversionPath]);
+        await (await this.dex).connect(await this.auth).protocolCmd(this.LONG_PROXY, takeCmd, false)
+    }
+
     async testRevisePoolIdx (idx: number, feeRate: number, protoTake: number, tickSize:number, jit: number = 0): Promise<ContractTransaction> {
         let abiCoder = new ethers.utils.AbiCoder()
 
