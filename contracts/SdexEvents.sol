@@ -98,19 +98,4 @@ library SdexEvents {
     /** LP Token */
     event PoolLpTokenSet (address indexed base, address indexed quote, uint256 poolIdx, address indexed lpToken);
     event LpTokenDeployerSet (address indexed oldLpTokenDeployerAddress, address indexed newLpTokenDeployerAddress);
-    event WrappedNativeTokenAddressSet (address indexed oldWrappedNativeTokenAddress, address indexed newWrappedNativeTokenAddress);
-    event SovTokenAddressSet (address indexed oldSovTokenAddress, address indexed newSovTokenAddress);
-    event SdexQueryAddressSet (address indexed oldSdexQueryAddress, address indexed newSdexQueryAddress);
-
-    /** Swap */
-    /* @notice Emitted when a new defaultPathConversion is added / modified.
-     * @param sourceTokenAddress source of token address for swap.
-     * @param destTokenAddress target token address for swap.
-     * @param defaultPath route path for the swap.
-     */
-    event SetDefaultPathConversion(
-        address indexed sourceTokenAddress,
-        address indexed destTokenAddress,
-        address[] defaultPath
-    );
 }

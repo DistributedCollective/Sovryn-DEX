@@ -367,48 +367,4 @@ contract PoolRegistry is StorageLayout {
         require(newLpTokenDeployerAddress.isContract(), "Invalid lpToken deployer address");
         lpTokenDeployerAddress = newLpTokenDeployerAddress;
     }
-
-    /**
-     * @dev set wrapped native token address
-     * @param newWrappedNativeTokenAddress new wrapped native token address
-     */
-    function setWrappedNativeTokenAddress (address newWrappedNativeTokenAddress) internal {
-        require(newWrappedNativeTokenAddress.isContract(), "Invalid new wrapped native token address");
-        wrappedNativeTokenAddress = newWrappedNativeTokenAddress;
-    }
-
-    /**
-     * @dev set sov token address
-     * @param newSovTokenAddress new sov token address
-     */
-    function setSovTokenAddress (address newSovTokenAddress) internal {
-        require(newSovTokenAddress.isContract(), "Invalid new sov token address");
-        sovTokenAddress = newSovTokenAddress;
-    }
-
-    /**
-     * @dev set sdex query address
-     * @param newSdexQueryAddress new sdex query address
-     */
-    function setSdexQueryAddress (address newSdexQueryAddress) internal {
-        require(newSdexQueryAddress.isContract(), "Invalid sdex query address");
-        sdexQueryAddress = newSdexQueryAddress;
-    }
-
-    /**
-     * @dev set defaultPathConversion
-     * @param sourceTokenAddress source token address.
-     * @param destTokenAddress destination token address.
-     * @param defaultPath default route paths for conversion.
-     */
-    function setDefaultPathConversion (address sourceTokenAddress, address destTokenAddress, address[] memory defaultPath) internal {
-        uint256 defaultPathLength = defaultPath.length;
-        require(defaultPathLength >= 3, "ERR_PATH_LENGTH");
-
-        for (uint256 i = 0; i < defaultPathLength; i++) {
-            require(Address.isContract(address(defaultPath[i])), "ERR_PATH_NON_CONTRACT_ADDR");
-        }
-
-        defaultPathConversion[sourceTokenAddress][destTokenAddress] = defaultPath;
-    }
 }

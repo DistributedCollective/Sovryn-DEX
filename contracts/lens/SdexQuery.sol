@@ -531,47 +531,4 @@ contract SdexQuery {
         uint256 val = SdexSwapDex(dex_).readSlot(SdexSlots.LP_TOKEN_DEPLOYER_SLOT);
         return address(uint160(val));
     }
-
-    /* @notice Queries wrapped native token address */
-    function queryWrappedNativeTokenAddress () public view returns (address) {
-        uint256 val = SdexSwapDex(dex_).readSlot(SdexSlots.WRAPPED_NATIVE_TOKEN_SLOT);
-        return address(uint160(val));
-    }
-
-    /* @notice Queries sov token address */
-    function querySovTokenAddress () public view returns (address) {
-        uint256 val = SdexSwapDex(dex_).readSlot(SdexSlots.SOV_TOKEN_SLOT);
-        return address(uint160(val));
-    }
-
-    /* @notice Queries sdex query address */
-    function querySdexQueryAddress () public view returns (address) {
-        uint256 val = SdexSwapDex(dex_).readSlot(SdexSlots.SDEX_QUERY_SLOT);
-        return address(uint160(val));
-    }
-
-
-    /* @notice Queries the current lp token beacon address */
-    function queryDefaultPathConversion (address sourceTokenAddress, address destTokenAddress) public view returns (address[] memory) {
-        bytes32 outerSlot = keccak256(abi.encode(sourceTokenAddress, SdexSlots.DEFAULT_PATH_CONVERSION_SLOT)); // slot of the outer mapping
-        bytes32 innerSlot = keccak256(abi.encode(destTokenAddress, outerSlot)); // slot of the inner mapping
-
-        // The slot of the array length
-        uint arrayLengthSlot = uint(innerSlot);
-
-        uint arrayLength;
-        assembly {
-            arrayLength := sload(arrayLengthSlot)
-        }
-
-        address[] memory result = new address[](arrayLength);
-
-        for (uint i = 0; i < arrayLength; i++) {
-            uint elementSlot = uint(keccak256(abi.encode(arrayLengthSlot))) + i;
-            uint256 val = SdexSwapDex(dex_).readSlot(elementSlot);
-            result[i] = address(uint160(val));
-        }
-
-        return result;
-    }
 }

@@ -15,7 +15,7 @@ contract SafeModePath is ColdPath {
         sudoCmd(cmd);
     }
 
-    function userCmd (bytes calldata) override public payable returns(bytes memory) {
+    function userCmd (bytes calldata) override public payable {
         revert("Emergency Safe Mode");
     }
 
