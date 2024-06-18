@@ -27,8 +27,6 @@ library ProtocolCmd {
     uint8 constant HOT_OPEN_CODE = 22;
     // Code to toggle on or off emergency safe mode 
     uint8 constant SAFE_MODE_CODE = 23;
-    // Code to collect accumulated protocol fees for the treasury.
-    uint8 constant COLLECT_TREASURY_CODE = 40;
     // Code to set the protocol treasury
     uint8 constant SET_TREASURY_CODE = 41;
     ////////////////////////////////////////////////////////////////////////////
@@ -113,4 +111,11 @@ library UserCmd {
     uint8 constant BURN_KNOCKOUT = 92;
     uint8 constant CLAIM_KNOCKOUT = 93;
     uint8 constant RECOVER_KNOCKOUT = 94;
+
+    
+    ////////////////////////////////////////////////////////////////////////////
+    // Protocol Fee command codes
+    ////////////////////////////////////////////////////////////////////////////
+    // Code to collect accumulated protocol fees for the treasury.
+    uint8 constant COLLECT_TREASURY_CODE = 40;
 }
