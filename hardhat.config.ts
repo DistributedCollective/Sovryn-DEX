@@ -139,6 +139,13 @@ module.exports = {
           timeout: 1000000,
       },
 
+      bitlayerTestnet: {
+        url: 'https://rpc.ankr.com/bitlayer_testnet',
+        chainId: 200810,
+        accounts: testnetAccounts,
+        maxPriorityFeePerGas: 150_000_000n, // 0.15 gwei
+      },
+
       tenderlyVirtualNetwork: { // @todo deploy a new virtual network on tenderly
         url: '',
         chainId: 0x0000,

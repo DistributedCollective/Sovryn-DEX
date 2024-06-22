@@ -13,6 +13,7 @@ import hre from "hardhat"
 async function deploy() {
     const { ethers } = hre;
     const chainIdHex = ethers.utils.hexlify((await ethers.provider.getNetwork()).chainId)
+    console.log(chainIdHex)
     let { addrs, chainId, wallet: authority } = initChain(chainIdHex.toString())
     console.log(`Deploying SdexSwapDeployer Contract to chain ${chainId}...`)
     console.log("Initial Authority: ")

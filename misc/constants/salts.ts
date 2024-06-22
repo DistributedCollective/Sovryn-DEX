@@ -17,6 +17,10 @@ CREATE2_SALTS.set('0x1a612d26bB8d612c66F8c6ee345afd7e7936c32a'.toLowerCase(),
 CREATE2_SALTS.set('0xac2d05A148aB512EDEDc7280c00292ED33d31f1A'.toLowerCase(), 
     '0x25ef3124b85daed03404c5f8316fe84de2b740b2e40bb68d427d2ffaf965f558')
 
+// bitlayer
+CREATE2_SALTS.set('0xb5E3dbAF69A46B71Fe9c055e6Fa36992ae6b2c1A'.toLowerCase(), 
+    '0x25ef3124b85daed03404c5f8316fe84de2b740b2e40bb68d427d2ffaf965f558')
+
 
 export function mapSalt(deployerAddr: string): BigNumber {
     console.log("salts deployerAddr:", deployerAddr.toLowerCase());

@@ -61,6 +61,7 @@ export async function refContract (contractName: string, addr: string,
 export function initChain (chainId?: string): 
     { wallet: Wallet, addrs: SdexAddrs, chainId: string, poolParams: SdexPoolParams, poolConfigs: ISdexPoolInfo[], lpTokenConfigs: ISdexLpTokenInfo[] } {
     chainId = chainId || process.env.CHAIN_ID || 'mock';
+
     const addrs = SDEX_ADDRS[chainId as keyof typeof SDEX_ADDRS]
     const rpcUrl = RPC_URLS[chainId as keyof typeof RPC_URLS]
     const poolParams = SDEX_POOL_PARAMS[chainId as keyof typeof SDEX_POOL_PARAMS]

@@ -7,7 +7,7 @@ import hre from "hardhat"
 
 const abi = new AbiCoder()
 
-const txArgs = { gasLimit: 1000000}
+const txArgs = { gasLimit: 1000000, maxFeePerGas: 150_000_000n, maxPriorityFeePerGas: 110_000_000n}
 
 // Used for testnet setups where governance isn't being put behind a timelock/multisig
 async function install() {

@@ -139,6 +139,45 @@ const l2MainnetParams: SdexPoolParams = {
     }
 }
 
+const bitlayerTestnetParams01: SdexPoolParams = {
+    universal: {
+        initLiq: 10000
+    },
+    stdPoolIdx: 36000,
+    stdPoolParams: {
+        jitThresh: 10,
+        tickSize: 1,
+        feeBps: 10,
+        knockoutOn: true
+    }
+}
+
+const bitlayerTestnetParams035: SdexPoolParams = {
+    universal: {
+        initLiq: 10000
+    },
+    stdPoolIdx: 37000,
+    stdPoolParams: {
+        jitThresh: 10,
+        tickSize: 1,
+        feeBps: 35,
+        knockoutOn: true
+    }
+}
+
+const bitlayerTestnetParams05: SdexPoolParams = {
+    universal: {
+        initLiq: 10000
+    },
+    stdPoolIdx: 38000,
+    stdPoolParams: {
+        jitThresh: 10,
+        tickSize: 1,
+        feeBps: 50,
+        knockoutOn: true
+    }
+}
+
 const goerliDryRunParams = mainnetParams
 
 export const SDEX_POOL_PARAMS = {
@@ -152,5 +191,6 @@ export const SDEX_POOL_PARAMS = {
     '0x80D': l2TestnetParams,
     '0xaa36a7': bobTestnetParams01, //sepolia
     '0x6f': bobTestnetParams01, //bob testnet
-    '0xed88': bobMainnetParams01  // @todo activate this for bob mainnet deployment
+    '0xed88': bobMainnetParams01,  // @todo activate this for bob mainnet deployment
+    '0x03106a': bitlayerTestnetParams05,
 }

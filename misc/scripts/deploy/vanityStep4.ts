@@ -5,49 +5,50 @@ import { AbiCoder } from '@ethersproject/abi';
 import hre from "hardhat"
 
 const abi = new AbiCoder()
+const depArgs = {gasLimit: 10000000, maxFeePerGas: 150_000_000n, maxPriorityFeePerGas: 110_000_000n}
 
 async function install() {
     const { ethers } = hre;
     const chainIdHex = ethers.utils.hexlify((await ethers.provider.getNetwork()).chainId)
     let { addrs, chainId, wallet: authority } = initChain(chainIdHex.toString())
 
-    addrs.cold = (await inflateAddr("ColdPath", addrs.cold, authority)).address
+    addrs.cold = (await inflateAddr("ColdPath", addrs.cold, authority, depArgs)).address
     //console.log(addrs)
 
-    addrs.hot = (await inflateAddr("HotProxy", addrs.hot, authority)).address
+    addrs.hot = (await inflateAddr("HotProxy", addrs.hot, authority, depArgs)).address
     //console.log(addrs)
 
-    addrs.knockout = (await inflateAddr("KnockoutLiqPath", addrs.knockout, authority)).address
+    addrs.knockout = (await inflateAddr("KnockoutLiqPath", addrs.knockout, authority, depArgs)).address
     //console.log(addrs)
 
-    addrs.koCross = (await inflateAddr("KnockoutFlagPath", addrs.koCross, authority)).address
+    addrs.koCross = (await inflateAddr("KnockoutFlagPath", addrs.koCross, authority, depArgs)).address
     //console.log(addrs)
 
-    addrs.long = (await inflateAddr("LongPath", addrs.long, authority)).address
+    addrs.long = (await inflateAddr("LongPath", addrs.long, authority, depArgs)).address
     //console.log(addrs)
 
-    addrs.micro = (await inflateAddr("MicroPaths", addrs.micro, authority)).address
+    addrs.micro = (await inflateAddr("MicroPaths", addrs.micro, authority, depArgs)).address
     //console.log(addrs)
 
-    addrs.warm = (await inflateAddr("WarmPath", addrs.warm, authority)).address
+    addrs.warm = (await inflateAddr("WarmPath", addrs.warm, authority, depArgs)).address
     //console.log(addrs)
 
-    addrs.policy = (await inflateAddr("SdexPolicy", addrs.policy, authority, addrs.dex)).address
+    addrs.policy = (await inflateAddr("SdexPolicy", addrs.policy, authority, addrs.dex, depArgs)).address
     //console.log(addrs)
 
-    addrs.query = (await inflateAddr("SdexQuery", addrs.query, authority, addrs.dex)).address
+    addrs.query = (await inflateAddr("SdexQuery", addrs.query, authority, addrs.dex, depArgs)).address
     //console.log(addrs)
 
-    addrs.impact = (await inflateAddr("SdexImpact", addrs.impact, authority, addrs.dex)).address
+    addrs.impact = (await inflateAddr("SdexImpact", addrs.impact, authority, addrs.dex, depArgs)).address
     //console.log(addrs)
 
-    addrs.swapRouter = (await inflateAddr("SdexSwapRouter", addrs.swapRouter || "", authority, addrs.dex)).address
+    addrs.swapRouter = (await inflateAddr("SdexSwapRouter", addrs.swapRouter || "", authority, addrs.dex, depArgs)).address
     //console.log(addrs)
 
-    addrs.swapBypass = (await inflateAddr("SdexSwapRouterBypass", addrs.swapBypass || "", authority, addrs.dex)).address
+    addrs.swapBypass = (await inflateAddr("SdexSwapRouterBypass", addrs.swapBypass || "", authority, addrs.dex, depArgs)).address
     //console.log(addrs)
 
-    addrs.safeMode = (await inflateAddr("SafeModePath", addrs.safeMode || "", authority)).address
+    addrs.safeMode = (await inflateAddr("SafeModePath", addrs.safeMode || "", authority, depArgs)).address
     //console.log(addrs)
 
     console.log(addrs)

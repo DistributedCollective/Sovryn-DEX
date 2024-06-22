@@ -16,7 +16,7 @@ import { RPC_URLS } from '../../constants/rpcs';
 async function vanityDeploy() {
     const chainIdHex = ethers.utils.hexlify((await ethers.provider.getNetwork()).chainId)
     let { addrs, chainId, wallet: authority } = initChain(chainIdHex.toString())
-
+    
     const salt = mapSalt(addrs.deployer)
 
     console.log("Deploying with the following addresses...")
@@ -29,7 +29,7 @@ async function vanityDeploy() {
     const factory = await ethers.getContractFactory("SdexSwapDex")
     console.log(await sdexDeployer.callStatic.deploy(factory.bytecode, salt))
 
-    await traceContractTx(sdexDeployer.deploy(factory.bytecode, salt, { gasLimit: BigNumber.from(10000000) }), "Salted Deploy")
+    await traceContractTx(sdexDeployer.deploy(factory.bytecode, salt, { gasLimit: BigNumber.from(10000000), maxFeePerGas: 150_000_000n, maxPriorityFeePerGas: 150_000_000n }), "Salted Deploy")
     addrs.dex = await sdexDeployer.dex_();
 
     console.log("SdexSwapDex deployed at: ", addrs.dex)

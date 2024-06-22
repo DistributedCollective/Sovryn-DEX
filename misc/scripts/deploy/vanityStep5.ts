@@ -10,7 +10,7 @@ import hre from "hardhat"
 const abi = new AbiCoder()
 let cmd
 
-const txArgs = { gasLimit: 1000000}
+const txArgs = { gasLimit: 1000000, maxFeePerGas: 150_000_000n, maxPriorityFeePerGas: 110_000_000n}
 
 async function install() {
     const { ethers } = hre;

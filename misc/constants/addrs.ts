@@ -136,6 +136,34 @@ const bobTestnetAddrs: SdexAddrs = {
   safeMode: '',
 }
 
+const bitlayerTestnetAddrs: SdexAddrs = {
+  dex: '0x701C1331AABf09F66E3f62455c7D1b4A3924E5C3',
+  cold: '0x5fA95212825a474E2C75676e8D833330F261CaeD',
+  warm: '0x2267Ae86066097EF49884Aac96c63f70fE818eb3',
+  long: '0x5a42EF62CE3f49888284a604833466A94fd9fc36',
+  micro: '0xac2d05A148aB512EDEDc7280c00292ED33d31f1A',
+  hot: '0xE00d0EeFfC2F6838b003c81Fe45894D6400c0B28',
+  knockout: '0x718425f091Df36637e14602635B9a17a20Ba23E4',
+  koCross: '0x007b3AA69A846cB1f76b60b3088230A52D2A83AC',
+  policy: '0x998e813AF56fd0337c3F95290fE102696226D4c5',
+  query: '0x71A5452a62F35F22A4C5115382d6b4CC8a864D4C',
+  impact: '0xA17B99B2817d0EdD992fE00D219DEc2b9835742d',
+  shell: '',
+  policyShell: '',
+  deployer: '0xb5E3dbAF69A46B71Fe9c055e6Fa36992ae6b2c1A',
+  govern: {
+    multisigTreasury: '',
+    multisigOps: '',
+    multisigEmergency: '',
+    timelockTreasury: '',
+    timelockOps: '',
+    timelockEmergency: ''
+  },
+  safeMode: '0x87837702E1d4682d98F466Bd78F21da125a2c58A',
+  swapRouter: '0x22Bdd8B71928003473EfA83cd69689cc04507cd9',
+  swapBypass: '0x6138a1c3c2a419075E50f2C8A8600366D4105f8d'
+}
+
 const tenderlyVirtualNetworkAddrs: SdexAddrs = {
   dex: '',
   cold: '',
@@ -223,6 +251,7 @@ export let SDEX_ADDRS = {
     '': tenderlyVirtualNetworkAddrs,
     '0xaa36a7': sepoliaAddrs, // keep in lower case
     '0x7a69': sepoliaForkedAddrs,
+    '0x03106a': bitlayerTestnetAddrs,
     'mock': mockAddrs,
 }
 
