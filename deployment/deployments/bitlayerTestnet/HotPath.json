@@ -1,0 +1,55 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "HotPath",
+  "address": "0xE00d0EeFfC2F6838b003c81Fe45894D6400c0B28",
+  "sourceName": "contracts/callpaths/HotPath.sol",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "pool",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "int24",
+          "name": "tick",
+          "type": "int24"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "isBid",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "pivotTime",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "feeMileage",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint160",
+          "name": "commitEntropy",
+          "type": "uint160"
+        }
+      ],
+      "name": "SdexKnockoutCross",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x608060405262010011805460ff60e01b1916600160e71b179055348015602457600080fd5b50603f8060326000396000f3fe6080604052600080fdfea2646970667358221220f162c0a32472a46cf68114e18c59aba31a5f6b9b1aad7e9dbf1310eeed9aad9364736f6c63430008130033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220f162c0a32472a46cf68114e18c59aba31a5f6b9b1aad7e9dbf1310eeed9aad9364736f6c63430008130033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
