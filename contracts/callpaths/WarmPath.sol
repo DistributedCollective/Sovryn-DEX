@@ -38,6 +38,20 @@ contract WarmPath is MarketSequencer, SettleLayer, ProtocolAccount {
     using CurveMath for CurveMath.CurveState;
     using Chaining for Chaining.PairFlow;
 
+    struct WarmPathUserCmdParam {
+        uint8 code;
+        address base;
+        address quote;
+        uint256 poolIdx;
+        int24 bidTick;
+        int24 askTick;
+        uint128 liq;
+        uint128 limitLower;
+        uint128 limitHigher;
+        uint8 reserveFlags;
+        address lpConduit;
+    }
+
     /* @notice Consolidated method for all atomic liquidity provider actions.
      * @dev    We consolidate multiple call types into a single method to reduce the 
      *         contract size in the main contract by paring down methods.
@@ -45,7 +59,20 @@ contract WarmPath is MarketSequencer, SettleLayer, ProtocolAccount {
      * @param code The command code corresponding to the actual method being called. */
     function userCmd (bytes calldata input) public payable returns
         (int128 baseFlow, int128 quoteFlow) {
+
+        WarmPathUserCmdParam memory params = decodeUserCmdInput(input);
+
+        if (params.lpConduit == address(0)) { params.lpConduit = lockHolder_; }
         
+        (baseFlow, quoteFlow) =
+            commitLP(params.code, params.base, params.quote, params.poolIdx, params.bidTick, params.askTick,
+                     params.liq, params.limitLower, params.limitHigher, params.lpConduit);
+        settleFlows(params.base, params.quote, baseFlow, quoteFlow, params.reserveFlags);
+
+        emit SdexEvents.SdexWarmCmd(msg.sender, input, baseFlow, quoteFlow);
+    }
+
+    function decodeUserCmdInput(bytes memory input) private pure returns(WarmPathUserCmdParam memory params) {
         (uint8 code, address base, address quote, uint256 poolIdx,
          int24 bidTick, int24 askTick, uint128 liq,
          uint128 limitLower, uint128 limitHigher,
@@ -53,14 +80,19 @@ contract WarmPath is MarketSequencer, SettleLayer, ProtocolAccount {
             abi.decode(input, (uint8,address,address,uint256,int24,int24,
                                uint128,uint128,uint128,uint8,address));
 
-        if (lpConduit == address(0)) { lpConduit = lockHolder_; }
-        
-        (baseFlow, quoteFlow) =
-            commitLP(code, base, quote, poolIdx, bidTick, askTick,
-                     liq, limitLower, limitHigher, lpConduit);
-        settleFlows(base, quote, baseFlow, quoteFlow, reserveFlags);
+        params.code = code;
+        params.base = base;
+        params.quote = quote;
+        params.poolIdx = poolIdx;
+        params.bidTick = bidTick;
+        params.askTick = askTick;
+        params.liq = liq;
+        params.limitLower = limitLower;
+        params.limitHigher = limitHigher;
+        params.reserveFlags = reserveFlags;
+        params.lpConduit = lpConduit;
 
-        emit SdexEvents.SdexWarmCmd(input, baseFlow, quoteFlow);
+        return params;
     }
 
     

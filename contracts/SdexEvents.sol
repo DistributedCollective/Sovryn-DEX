@@ -86,7 +86,7 @@ library SdexEvents {
     event SdexHotCmd (bytes input, int128 baseFlow, int128 quoteFlow);
     event SdexColdCmd (bytes input);
     event SdexColdProtocolCmd (bytes input);
-    event SdexWarmCmd (bytes input, int128 baseFlow, int128 quoteFlow);
+    event SdexWarmCmd (address indexed msgSender, bytes input, int128 baseFlow, int128 quoteFlow);
     event SdexKnockoutCmd (bytes input, int128 baseFlow, int128 quoteFlow);
 
     event SdexMicroMintAmbient(bytes input, bytes output);
