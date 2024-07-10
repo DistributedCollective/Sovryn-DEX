@@ -6,7 +6,6 @@ import '../libraries/Directives.sol';
 import '../libraries/Encoding.sol';
 import '../libraries/TokenFlow.sol';
 import '../libraries/PriceGrid.sol';
-import '../libraries/ProtocolCmd.sol';
 import '../mixins/MarketSequencer.sol';
 import '../mixins/SettleLayer.sol';
 import '../mixins/PoolRegistry.sol';
