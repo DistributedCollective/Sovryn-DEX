@@ -898,7 +898,7 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
 ]
 
 export const SDEX_POOL_CONFIGS = {
-    '0x6f': bobTestnetPoolConfigs, //bob testnet
+    '0x0c576d': bobTestnetPoolConfigs, //bob testnet
     '0xed88': bobMainnetPoolConfigs, // @todo change to bobMainnetPoolConfigs for real token deployment
     '0xaa36a7' : sepoliaTestnetPoolConfigs,
 }
