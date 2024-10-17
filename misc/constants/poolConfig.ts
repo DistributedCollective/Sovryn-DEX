@@ -895,6 +895,94 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
         initialRate: 0.000001502890173410, // @todo initial rate
         poolIdx: 420,
     },
+
+    // LST
+    {
+        baseToken: {
+            tokenSymbol: "UniBTC",
+            tokenDeploymentName: "UniBTC",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "SolvBTC.BBN",
+            tokenDeploymentName: "SolvBTC.BBN",
+            isNativeToken: false,
+        },
+        initialRate: 0.9246268, // (UNIBTC / SolvBTC.BBN ) --> means 1 UNIBTC = 0.9246268 SolvBTC.BBN
+        poolIdx: 400,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "SolvBTC.BBN",
+            tokenDeploymentName: "SolvBTC.BBN",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "wBTC",
+            tokenDeploymentName: "wBTC",
+            isNativeToken: false,
+        },
+        initialRate: 1,
+        poolIdx: 400,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "UniBTC",
+            tokenDeploymentName: "UniBTC",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "wBTC",
+            tokenDeploymentName: "wBTC",
+            isNativeToken: false,
+        },
+        initialRate: 0.9270480, // (UniBTC/wBTC) --> means 1 UniBTC = 0.9270480 wBTC
+        poolIdx: 400,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "SolvBTC",
+            tokenDeploymentName: "SolvBTC",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "wBTC",
+            tokenDeploymentName: "wBTC",
+            isNativeToken: false,
+        },
+        initialRate: 1,
+        poolIdx: 400,
+    },
+
+    // RUNE
+    {
+        baseToken: {
+            tokenSymbol: "DOG",
+            tokenDeploymentName: "DOG",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "POWA",
+            tokenDeploymentName: "POWA",
+            isNativeToken: false,
+        },
+        initialRate: 8062.1837, // (DOG/POWA) --> means 1 DOG = 8062.1837 POWA
+        poolIdx: 420,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "DOG",
+            tokenDeploymentName: "DOG",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "wBTC",
+            tokenDeploymentName: "wBTC",
+            isNativeToken: false,
+        },
+        initialRate: 0.00000008248, // (DOG/wBTC) --> means 1 DOG = 0.00000008248 wBTC
+        poolIdx: 420,
+    },
 ]
 
 export const SDEX_POOL_CONFIGS = {
