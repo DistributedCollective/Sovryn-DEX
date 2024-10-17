@@ -111,8 +111,8 @@ module.exports = {
       },
 
       bobTestnet: {
-        url: 'https://testnet.rpc.gobob.xyz/',
-        chainId: 111,
+        url: 'https://bob-sepolia.rpc.gobob.xyz/',
+        chainId: 808813,
         accounts: testnetAccounts,
         gasPrice: 50000000,
       },
@@ -198,10 +198,10 @@ module.exports = {
         customChains: [
           {
             network: "bobTestnet",
-            chainId: 111,
+            chainId: 808813,
             urls: {
-              apiURL: "https://testnet-explorer.gobob.xyz/api/",
-              browserURL: "https://testnet-explorer.gobob.xyz/"
+              apiURL: "https://bob-sepolia.explorer.gobob.xyz/api/",
+              browserURL: "https://bob-sepolia.explorer.gobob.xyz/"
             }
           },
           {

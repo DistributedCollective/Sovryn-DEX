@@ -151,6 +151,6 @@ export const SDEX_POOL_PARAMS = {
     '0x97114F': bobTestnetParams035,
     '0x80D': l2TestnetParams,
     '0xaa36a7': bobTestnetParams01, //sepolia
-    '0x6f': bobTestnetParams01, //bob testnet
+    '0x0c576d': bobTestnetParams01, //bob testnet
     '0xed88': bobMainnetParams01  // @todo activate this for bob mainnet deployment
 }

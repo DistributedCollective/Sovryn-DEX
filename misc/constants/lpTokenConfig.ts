@@ -639,7 +639,7 @@ export const sepoliaLpTokenConfigs: ISdexLpTokenInfo[] = [
 ]
 
 export const SDEX_LP_TOKEN_CONFIGS = {
-    '0x6f': bobTestnetLpTokenConfigs, //bob testnet
+    '0x0c576d': bobTestnetLpTokenConfigs, //bob testnet
     '0xed88': bobMainnetLpTokenConfigs, // @todo change to bobMainnetPoolConfigs for real token deployment
     '0xaa36a7' : sepoliaLpTokenConfigs,
 }

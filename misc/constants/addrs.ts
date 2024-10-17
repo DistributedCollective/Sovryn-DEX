@@ -111,20 +111,20 @@ const bobMainnetAddrs: SdexAddrs = {
 }
 
 const bobTestnetAddrs: SdexAddrs = {
-  dex: '0xA86F239490bd35923eCBD578C2A8989803294bee',
-  cold: '0x2D4C9B0A213a61ef0ce2a6D5eB6101C63404F173',
-  warm: '0x16cB0FCB2fBe598e9a314DF66612f1b14be54381',
-  long: '0xea9adAbDf9D39923cD9B7609d6597a0F4146fb1B',
-  micro: '0x1eEDE17D8708f2bAa7A421BFE346E7c7262F9f1e',
-  hot: '0xFA57d9d1Db4676099e67215906f2F681d7730882',
-  knockout: '0x1dff4Ff93dF17Ad6F44E23368341CcFb8fB8B675',
-  koCross: '0x6087EbE47fb43Fd56fA71eDe6f9035b777F21862',
-  policy: '0x8aC0bf8dd950616878A6466c5B1E7e291403a5a6',
-  query: '0x35a4dd53C1AEd1AFD48659175ab3981f3C39493F',
-  impact: '0xdB0Bb1e4b7aA5a747E17957FC66C772cea089ec5',
+  dex: '0x6E47BC2BC7CF8383369BbA36F520323C5F16dC1C',
+  cold: '0x16ca12702BF1cf671548c904ace633aF3cCa33dd',
+  warm: '0xEdEF1E6d570317a7Cb65EA1eDBb18C0184BD4C70',
+  long: '0x820baF06b193143718308B8ef3b19C1490202cFf',
+  micro: '0x41b5f6584b22ac5b118e013eA3289b85C8E25D89',
+  hot: '0x4d9dB3FA7007e59Ac93e5FCc1bE872182d2EE07c',
+  knockout: '0x67519D48d57C94714b76d678B0998a525C1A362F',
+  koCross: '0x28A6328B0e167035F33a4C58374F2524Ae9c8dC1',
+  policy: '0x304E007A6e093dE6e047563a1Ebb82e11BDceaf5',
+  query: '0x28A6328B0e167035F33a4C58374F2524Ae9c8dC1',
+  impact: '0x56c1F530BF3C81f729EBA05b7BFbf5daA48C875b',
   shell: '',
-  policyShell: '',
-  deployer: '0x1a612d26bB8d612c66F8c6ee345afd7e7936c32a',
+  policyShell: '0x304E007A6e093dE6e047563a1Ebb82e11BDceaf5',
+  deployer: '0xbF78d668a90Eac8C1a247C631a07dcC169428658',
   govern: {
     multisigTreasury: '',
     multisigOps: '',
@@ -133,7 +133,9 @@ const bobTestnetAddrs: SdexAddrs = {
     timelockOps: '',
     timelockEmergency: ''
   },
-  safeMode: '',
+  safeMode: '0x0448A93aDf3C171D25486a6Ecb88588f19642CA0',
+  swapRouter: '0x9F6dD52C51D50e3C2Dce847d2a88067bDcB65500',
+  swapBypass: '0x806305A4222905CB0a083391d18795F52B8d462c',
 }
 
 const tenderlyVirtualNetworkAddrs: SdexAddrs = {
@@ -218,7 +220,7 @@ const sepoliaForkedAddrs: SdexAddrs = {
 }
 
 export let SDEX_ADDRS = {
-    '0x6f': bobTestnetAddrs,
+    '0x0c576d': bobTestnetAddrs,
     '0xed88': bobMainnetAddrs,
     '': tenderlyVirtualNetworkAddrs,
     '0xaa36a7': sepoliaAddrs, // keep in lower case
@@ -227,7 +229,7 @@ export let SDEX_ADDRS = {
 }
 
 export let POOL_IDXS = {
-    '0x6f': {
+    '0x0c576d': {
       "01": 36000,
       "035": 37000,
       "05": 38000,
