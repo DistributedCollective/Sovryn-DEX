@@ -34,6 +34,15 @@ contract ColdPath is MarketSequencer, DepositDesk, ProtocolAccount {
     using Chaining for Chaining.PairFlow;
     using ProtocolCmd for bytes;
 
+    /** @dev ONLY APPLY CONSTANT VARIABLE HERE */
+    uint256 public constant TREASURY_START_TIME_OFFSET = 0 days;
+
+    /* @dev access control for treasury role */
+    modifier onlyTreasury() {
+        require(msg.sender == treasury_, "Only Treasury");
+        _;
+    }
+
     /* @notice Consolidated method for protocol control related commands. */
     function protocolCmd (bytes calldata cmd) virtual public {
         uint8 code = uint8(cmd[31]);
@@ -71,9 +80,7 @@ contract ColdPath is MarketSequencer, DepositDesk, ProtocolAccount {
         require(sudoMode_, "Sudo");
         uint8 cmdCode = uint8(cmd[31]);
         
-        if (cmdCode == ProtocolCmd.COLLECT_TREASURY_CODE) {
-            collectProtocol(cmd);
-        } else if (cmdCode == ProtocolCmd.SET_TREASURY_CODE) {
+        if (cmdCode == ProtocolCmd.SET_TREASURY_CODE) {
             setTreasury(cmd);
         } else if (cmdCode == ProtocolCmd.AUTHORITY_TRANSFER_CODE) {
             transferAuthority(cmd);
@@ -110,6 +117,8 @@ contract ColdPath is MarketSequencer, DepositDesk, ProtocolAccount {
             resetNonceCond(cmd);
         } else if (cmdCode == UserCmd.GATE_ORACLE_COND) {
             checkGateOracle(cmd);
+        } else if (cmdCode == UserCmd.COLLECT_TREASURY_CODE) {
+            collectProtocol(cmd);
         } else {
             revert("Invalid command");
         }
@@ -242,22 +251,22 @@ contract ColdPath is MarketSequencer, DepositDesk, ProtocolAccount {
     /* @notice Pays out the the protocol fees.
      * @param token The token for which the accumulated fees are being paid out. 
      *              (Or if 0x0 pays out native Ethereum.) */
-    function collectProtocol (bytes calldata cmd) private {
-        (, address token) = abi.decode(cmd, (uint8, address));
+    function collectProtocol (bytes calldata cmd) private onlyTreasury {
+        (, address[] memory tokens) = abi.decode(cmd, (uint8, address[]));
 
         require(block.timestamp >= treasuryStartTime_, "Treasury start");
-        emit SdexEvents.ProtocolDividend(token, treasury_);
-        disburseProtocolFees(treasury_, token);
+        emit SdexEvents.ProtocolDividend(tokens, treasury_);
+        disburseProtocolFees(tokens);
     }
 
     /* @notice Sets the treasury address to receive protocol fees. Once set, the treasury cannot
-     *         receive fees until 7 days after. */
+     *         receive fees until the start time offset. */
     function setTreasury (bytes calldata cmd) private {
         (, address treasury) = abi.decode(cmd, (uint8, address));
 
         require(treasury != address(0) && treasury.code.length != 0, "Treasury invalid");
         treasury_ = treasury;
-        treasuryStartTime_ = uint64(block.timestamp + 7 days);
+        treasuryStartTime_ = uint64(block.timestamp + TREASURY_START_TIME_OFFSET);
         emit SdexEvents.TreasurySet(treasury_, treasuryStartTime_);
     }
 
