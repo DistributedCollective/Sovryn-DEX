@@ -478,6 +478,49 @@ export const bobTestnetPoolConfigs: ISdexPoolInfo[] = [
         initialRate: 0.00000168, // paired to SOV (POWA/eSOV) --> means 1 POWA = 0.00000168 eSOV
         poolIdx: 38000,
     },
+
+    {
+        baseToken: {
+            tokenSymbol: "SolvBTC.BBN",
+            tokenDeploymentName: "SolvBTC.BBN",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "MOCK_WBTC",
+            tokenDeploymentName: "MOCK_WBTC",
+            isNativeToken: false,
+        },
+        initialRate: 1,
+        poolIdx: 36000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "UniBTC",
+            tokenDeploymentName: "UniBTC",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "MOCK_WBTC",
+            tokenDeploymentName: "MOCK_WBTC",
+            isNativeToken: false,
+        },
+        initialRate: 1,
+        poolIdx: 36000,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "SolvBTC.BBN",
+            tokenDeploymentName: "SolvBTC.BBN",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "UniBTC",
+            tokenDeploymentName: "UniBTC",
+            isNativeToken: false,
+        },
+        initialRate: 1,
+        poolIdx: 36000,
+    },
 ]
 
 export const bobMainnetMockPoolConfigs: ISdexPoolInfo[] = [
