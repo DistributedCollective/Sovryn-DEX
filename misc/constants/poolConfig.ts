@@ -1026,6 +1026,36 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
         initialRate: 0.00000008248, // (DOG/wBTC) --> means 1 DOG = 0.00000008248 wBTC
         poolIdx: 420,
     },
+
+    {
+        baseToken: {
+            tokenSymbol: "PUPS",
+            tokenDeploymentName: "PUPS",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "POWA",
+            tokenDeploymentName: "POWA",
+            isNativeToken: false,
+        },
+        initialRate: 203105.5901, // (PUPS/POWA) --> means 1 PUPS = 203105.5901 POWA
+        poolIdx: 420,
+    },
+
+    {
+        baseToken: {
+            tokenSymbol: "PUPS",
+            tokenDeploymentName: "PUPS",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "wBTC",
+            tokenDeploymentName: "wBTC",
+            isNativeToken: false,
+        },
+        initialRate: 0.00000190189, // (PUPS/wBTC) --> means 1 PUPS = 0.00000190189 wBTC
+        poolIdx: 420,
+    },
 ]
 
 export const SDEX_POOL_CONFIGS = {
