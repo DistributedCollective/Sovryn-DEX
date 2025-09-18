@@ -1201,34 +1201,34 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
         initialRate: 0.00000783350973, // (satUSD/wBTC) --> means 1 satUSD = 0.00000783350973 wBTC
         poolIdx: 400,
     },
-    {
-        baseToken: {
-            tokenSymbol: "PUPS",
-            tokenDeploymentName: "PUPS",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "wBTC",
-            tokenDeploymentName: "wBTC",
-            isNativeToken: false,
-        },
-        initialRate: 0.000000220962625, // (PUPS/wBTC) --> means 1 PUPS = 0.000000220962625 wBTC
-        poolIdx: 420,
-    },
-    {
-        baseToken: {
-            tokenSymbol: "DOG",
-            tokenDeploymentName: "DOG",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "wBTC",
-            tokenDeploymentName: "wBTC",
-            isNativeToken: false,
-        },
-        initialRate: 0.000000030792239, // (DOG/wBTC) --> means 1 DOG = 0.000000030792239 wBTC
-        poolIdx: 420,
-    },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "PUPS",
+    //         tokenDeploymentName: "PUPS",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "wBTC",
+    //         tokenDeploymentName: "wBTC",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 0.000000220962625, // (PUPS/wBTC) --> means 1 PUPS = 0.000000220962625 wBTC
+    //     poolIdx: 420,
+    // },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "DOG",
+    //         tokenDeploymentName: "DOG",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "wBTC",
+    //         tokenDeploymentName: "wBTC",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 0.000000030792239, // (DOG/wBTC) --> means 1 DOG = 0.000000030792239 wBTC
+    //     poolIdx: 420,
+    // },
 ]
 
 export const SDEX_POOL_CONFIGS = {
