@@ -1070,7 +1070,7 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             tokenDeploymentName: "oUSDT",
             isNativeToken: false,
         },
-        initialRate: 0.09339946015, // (SOV/oUSDT) --> means 1 SOV = 0.09339946015 oUSDT
+        initialRate: 0.09768, // (SOV/oUSDT) --> means 1 SOV = 0.09768 oUSDT
         poolIdx: 410,
     },
     {
@@ -1084,7 +1084,7 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             tokenDeploymentName: "oUSDT",
             isNativeToken: false,
         },
-        initialRate: 0.7763975155, // (DLLR/oUSDT) --> means 1 DLLR = 0.7763975155 oUSDT
+        initialRate: 0.9764, // (DLLR/oUSDT) --> means 1 DLLR = 0.9764 oUSDT
         poolIdx: 400,
     },
     {
@@ -1098,7 +1098,7 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             tokenDeploymentName: "oUSDT",
             isNativeToken: false,
         },
-        initialRate: 0.999000999, // (USDC/oUSDT) --> means 1 USDC = 0.999000999 oUSDT
+        initialRate: 0.9997, // (USDC/oUSDT) --> means 1 USDC = 0.9997 oUSDT
         poolIdx: 400,
     },
     {
@@ -1112,7 +1112,7 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             tokenDeploymentName: "oUSDT",
             isNativeToken: false,
         },
-        initialRate: 1.002707309736, // (satUSD/oUSDT) --> means 1 satUSD = 1.002707309736 oUSDT
+        initialRate: 0.9964, // (satUSD/oUSDT) --> means 1 satUSD = 0.9964 oUSDT
         poolIdx: 400,
     },
 
@@ -1128,7 +1128,7 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             tokenDeploymentName: "wBTC",
             isNativeToken: false,
         },
-        initialRate: 0.9993004897, // (SolvBTC/wBTC) --> means 1 SolvBTC = 0.9993004897 wBTC
+        initialRate: 0.9970830792, // (SolvBTC/wBTC) --> means 1 SolvBTC = 0.9970830792 wBTC
         poolIdx: 400,
     },
     {
@@ -1142,7 +1142,7 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             tokenDeploymentName: "wBTC",
             isNativeToken: false,
         },
-        initialRate: 0.9987016878, // (xSolvBTC/wBTC) --> means 1 xSolvBTC = 0.9987016878 wBTC
+        initialRate: 0.9927695721, // (xSolvBTC/wBTC) --> means 1 xSolvBTC = 0.9927695721 wBTC
         poolIdx: 400,
     },
     {
@@ -1156,7 +1156,7 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             tokenDeploymentName: "wBTC",
             isNativeToken: false,
         },
-        initialRate: 0.9936406995, // (UniBTC/wBTC) --> means 1 UniBTC = 0.9936406995 wBTC
+        initialRate: 0.9937595573, // (UniBTC/wBTC) --> means 1 UniBTC = 0.9937595573 wBTC
         poolIdx: 400,
     },
     {
@@ -1170,7 +1170,7 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             tokenDeploymentName: "wBTC",
             isNativeToken: false,
         },
-        initialRate: 0.9938382031, // (tBTC/wBTC) --> means 1 tBTC = 0.9938382031 wBTC
+        initialRate: 0.9962521987, // (tBTC/wBTC) --> means 1 tBTC = 0.9962521987 wBTC
         poolIdx: 400,
     },
     {
@@ -1184,7 +1184,7 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             tokenDeploymentName: "wBTC",
             isNativeToken: false,
         },
-        initialRate: 0.000000835278495, // (SOV/wBTC) --> means 1 SOV = 0.000000835278495 wBTC
+        initialRate: 0.000000863408554, // (SOV/wBTC) --> means 1 SOV = 0.000000863408554 wBTC
         poolIdx: 410,
     },
     {
@@ -1198,7 +1198,7 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             tokenDeploymentName: "wBTC",
             isNativeToken: false,
         },
-        initialRate: 0.00000783350973, // (satUSD/wBTC) --> means 1 satUSD = 0.00000783350973 wBTC
+        initialRate: 0.000008807332962, // (satUSD/wBTC) --> means 1 satUSD = 0.000008807332962 wBTC
         poolIdx: 400,
     },
     // {
