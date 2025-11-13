@@ -754,50 +754,325 @@ export const bobMainnetMockPoolConfigs: ISdexPoolInfo[] = [
 
 // @todo update the rate accordingly once we are deploying the real token
 export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
-    {
-        baseToken: {
-            tokenSymbol: "USDC",
-            tokenDeploymentName: "USDC",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "USDT",
-            tokenDeploymentName: "USDT",
-            isNativeToken: false,
-        },
-        initialRate: 1, // (USDC/USDT) --> means 1 USDC = 1 USDT
-        poolIdx: 400,
-    },
-    {
-        baseToken: {
-            tokenSymbol: "USDT",
-            tokenDeploymentName: "USDT",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "eDLLR",
-            tokenDeploymentName: "DLLR",
-            isNativeToken: false,
-        },
-        initialRate: 1, // (USDT/eDLLR) --> means 1 USDT = 1 eDLLR
-        poolIdx: 400,
-    },
-    {
-        baseToken: {
-            tokenSymbol: "tBTC",
-            tokenDeploymentName: "tBTC",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "WBTC",
-            tokenDeploymentName: "wBTC",
-            isNativeToken: false,
-        },
-        initialRate: 0.9995, // (tBTC/WBTC) --> means 1 tBTC = 0.9995 WBTC
-        poolIdx: 400,
-    },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "USDC",
+    //         tokenDeploymentName: "USDC",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "USDT",
+    //         tokenDeploymentName: "USDT",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 1, // (USDC/USDT) --> means 1 USDC = 1 USDT
+    //     poolIdx: 400,
+    // },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "USDT",
+    //         tokenDeploymentName: "USDT",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "eDLLR",
+    //         tokenDeploymentName: "DLLR",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 1, // (USDT/eDLLR) --> means 1 USDT = 1 eDLLR
+    //     poolIdx: 400,
+    // },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "tBTC",
+    //         tokenDeploymentName: "tBTC",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "WBTC",
+    //         tokenDeploymentName: "wBTC",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 0.9995, // (tBTC/WBTC) --> means 1 tBTC = 0.9995 WBTC
+    //     poolIdx: 400,
+    // },
 
-    // SOV Pairs
+    // // SOV Pairs
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "DLLR",
+    //         tokenDeploymentName: "DLLR",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "SOV",
+    //         tokenDeploymentName: "SOV",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 0.56, // paired to SOV (eDLLR/eSOV) --> means 1 eDLLR = 0.56 eSOV
+    //     poolIdx: 400,
+    // },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "USDT",
+    //         tokenDeploymentName: "USDT",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "SOV",
+    //         tokenDeploymentName: "SOV",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 0.56,
+    //     poolIdx: 410,
+    // },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "USDC",
+    //         tokenDeploymentName: "USDC",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "SOV",
+    //         tokenDeploymentName: "SOV",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 0.56,
+    //     poolIdx: 410,
+    // },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "DAI",
+    //         tokenDeploymentName: "DAI",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "SOV",
+    //         tokenDeploymentName: "SOV",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 0.56,
+    //     poolIdx: 410,
+    // },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "WBTC",
+    //         tokenDeploymentName: "wBTC",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "SOV",
+    //         tokenDeploymentName: "SOV",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 32540, // paired to SOV (wBTC/eSOV) --> means 1 wBTC = 32540 SOV
+    //     poolIdx: 410,
+    // },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "TBTC",
+    //         tokenDeploymentName: "tBTC",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "SOV",
+    //         tokenDeploymentName: "SOV",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 32523,
+    //     poolIdx: 410,
+    // },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "ETH",
+    //         tokenDeploymentName: "ETH",
+    //         isNativeToken: true,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "SOV",
+    //         tokenDeploymentName: "SOV",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 1651, // paired to SOV (ETH/eSOV) --> means 1 ETH = 1642 eSOV
+    //     poolIdx: 410,
+    // },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "wstETH",
+    //         tokenDeploymentName: "wstETH",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "SOV",
+    //         tokenDeploymentName: "SOV",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 1915,
+    //     poolIdx: 410,
+    // },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "rETH",
+    //         tokenDeploymentName: "rETH",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "SOV",
+    //         tokenDeploymentName: "SOV",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 1824,
+    //     poolIdx: 410,
+    // },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "POWA",
+    //         tokenDeploymentName: "POWA",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "SOV",
+    //         tokenDeploymentName: "SOV",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 0.000001502890173410, // @todo initial rate
+    //     poolIdx: 420,
+    // },
+
+    // // LST
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "UniBTC",
+    //         tokenDeploymentName: "UniBTC",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "SolvBTC.BBN",
+    //         tokenDeploymentName: "SolvBTC.BBN",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 0.9246268, // (UNIBTC / SolvBTC.BBN ) --> means 1 UNIBTC = 0.9246268 SolvBTC.BBN
+    //     poolIdx: 400,
+    // },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "SolvBTC.BBN",
+    //         tokenDeploymentName: "SolvBTC.BBN",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "wBTC",
+    //         tokenDeploymentName: "wBTC",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 1,
+    //     poolIdx: 400,
+    // },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "UniBTC",
+    //         tokenDeploymentName: "UniBTC",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "wBTC",
+    //         tokenDeploymentName: "wBTC",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 0.9270480, // (UniBTC/wBTC) --> means 1 UniBTC = 0.9270480 wBTC
+    //     poolIdx: 400,
+    // },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "SolvBTC",
+    //         tokenDeploymentName: "SolvBTC",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "wBTC",
+    //         tokenDeploymentName: "wBTC",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 1,
+    //     poolIdx: 400,
+    // },
+
+    // // RUNE
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "DOG",
+    //         tokenDeploymentName: "DOG",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "POWA",
+    //         tokenDeploymentName: "POWA",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 8062.1837, // (DOG/POWA) --> means 1 DOG = 8062.1837 POWA
+    //     poolIdx: 420,
+    // },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "DOG",
+    //         tokenDeploymentName: "DOG",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "wBTC",
+    //         tokenDeploymentName: "wBTC",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 0.00000008248, // (DOG/wBTC) --> means 1 DOG = 0.00000008248 wBTC
+    //     poolIdx: 420,
+    // },
+
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "PUPS",
+    //         tokenDeploymentName: "PUPS",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "POWA",
+    //         tokenDeploymentName: "POWA",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 203105.5901, // (PUPS/POWA) --> means 1 PUPS = 203105.5901 POWA
+    //     poolIdx: 420,
+    // },
+
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "PUPS",
+    //         tokenDeploymentName: "PUPS",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "wBTC",
+    //         tokenDeploymentName: "wBTC",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 0.00000190189, // (PUPS/wBTC) --> means 1 PUPS = 0.00000190189 wBTC
+    //     poolIdx: 420,
+    // },
+
+    // Additional Pairs (BOB WBTC & USDT migration)
+    // USDT migration (@todo update the rate and pool idx once it's finalized)
+    {
+        baseToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "SOV",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "oUSDT",
+            tokenDeploymentName: "oUSDT",
+            isNativeToken: false,
+        },
+        initialRate: 0.09768, // (SOV/oUSDT) --> means 1 SOV = 0.09768 oUSDT
+        poolIdx: 410,
+    },
     {
         baseToken: {
             tokenSymbol: "DLLR",
@@ -805,26 +1080,12 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: false,
         },
         quoteToken: {
-            tokenSymbol: "SOV",
-            tokenDeploymentName: "SOV",
+            tokenSymbol: "oUSDT",
+            tokenDeploymentName: "oUSDT",
             isNativeToken: false,
         },
-        initialRate: 0.56, // paired to SOV (eDLLR/eSOV) --> means 1 eDLLR = 0.56 eSOV
+        initialRate: 0.9764, // (DLLR/oUSDT) --> means 1 DLLR = 0.9764 oUSDT
         poolIdx: 400,
-    },
-    {
-        baseToken: {
-            tokenSymbol: "USDT",
-            tokenDeploymentName: "USDT",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "SOV",
-            tokenDeploymentName: "SOV",
-            isNativeToken: false,
-        },
-        initialRate: 0.56,
-        poolIdx: 410,
     },
     {
         baseToken: {
@@ -833,155 +1094,29 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             isNativeToken: false,
         },
         quoteToken: {
-            tokenSymbol: "SOV",
-            tokenDeploymentName: "SOV",
+            tokenSymbol: "oUSDT",
+            tokenDeploymentName: "oUSDT",
             isNativeToken: false,
         },
-        initialRate: 0.56,
-        poolIdx: 410,
+        initialRate: 0.9997, // (USDC/oUSDT) --> means 1 USDC = 0.9997 oUSDT
+        poolIdx: 400,
     },
     {
         baseToken: {
-            tokenSymbol: "DAI",
-            tokenDeploymentName: "DAI",
+            tokenSymbol: "satUSD",
+            tokenDeploymentName: "satUSD",
             isNativeToken: false,
         },
         quoteToken: {
-            tokenSymbol: "SOV",
-            tokenDeploymentName: "SOV",
+            tokenSymbol: "oUSDT",
+            tokenDeploymentName: "oUSDT",
             isNativeToken: false,
         },
-        initialRate: 0.56,
-        poolIdx: 410,
-    },
-    {
-        baseToken: {
-            tokenSymbol: "WBTC",
-            tokenDeploymentName: "wBTC",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "SOV",
-            tokenDeploymentName: "SOV",
-            isNativeToken: false,
-        },
-        initialRate: 32540, // paired to SOV (wBTC/eSOV) --> means 1 wBTC = 32540 SOV
-        poolIdx: 410,
-    },
-    {
-        baseToken: {
-            tokenSymbol: "TBTC",
-            tokenDeploymentName: "tBTC",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "SOV",
-            tokenDeploymentName: "SOV",
-            isNativeToken: false,
-        },
-        initialRate: 32523,
-        poolIdx: 410,
-    },
-    {
-        baseToken: {
-            tokenSymbol: "ETH",
-            tokenDeploymentName: "ETH",
-            isNativeToken: true,
-        },
-        quoteToken: {
-            tokenSymbol: "SOV",
-            tokenDeploymentName: "SOV",
-            isNativeToken: false,
-        },
-        initialRate: 1651, // paired to SOV (ETH/eSOV) --> means 1 ETH = 1642 eSOV
-        poolIdx: 410,
-    },
-    {
-        baseToken: {
-            tokenSymbol: "wstETH",
-            tokenDeploymentName: "wstETH",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "SOV",
-            tokenDeploymentName: "SOV",
-            isNativeToken: false,
-        },
-        initialRate: 1915,
-        poolIdx: 410,
-    },
-    {
-        baseToken: {
-            tokenSymbol: "rETH",
-            tokenDeploymentName: "rETH",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "SOV",
-            tokenDeploymentName: "SOV",
-            isNativeToken: false,
-        },
-        initialRate: 1824,
-        poolIdx: 410,
-    },
-    {
-        baseToken: {
-            tokenSymbol: "POWA",
-            tokenDeploymentName: "POWA",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "SOV",
-            tokenDeploymentName: "SOV",
-            isNativeToken: false,
-        },
-        initialRate: 0.000001502890173410, // @todo initial rate
-        poolIdx: 420,
+        initialRate: 0.9964, // (satUSD/oUSDT) --> means 1 satUSD = 0.9964 oUSDT
+        poolIdx: 400,
     },
 
-    // LST
-    {
-        baseToken: {
-            tokenSymbol: "UniBTC",
-            tokenDeploymentName: "UniBTC",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "SolvBTC.BBN",
-            tokenDeploymentName: "SolvBTC.BBN",
-            isNativeToken: false,
-        },
-        initialRate: 0.9246268, // (UNIBTC / SolvBTC.BBN ) --> means 1 UNIBTC = 0.9246268 SolvBTC.BBN
-        poolIdx: 400,
-    },
-    {
-        baseToken: {
-            tokenSymbol: "SolvBTC.BBN",
-            tokenDeploymentName: "SolvBTC.BBN",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "wBTC",
-            tokenDeploymentName: "wBTC",
-            isNativeToken: false,
-        },
-        initialRate: 1,
-        poolIdx: 400,
-    },
-    {
-        baseToken: {
-            tokenSymbol: "UniBTC",
-            tokenDeploymentName: "UniBTC",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "wBTC",
-            tokenDeploymentName: "wBTC",
-            isNativeToken: false,
-        },
-        initialRate: 0.9270480, // (UniBTC/wBTC) --> means 1 UniBTC = 0.9270480 wBTC
-        poolIdx: 400,
-    },
+    // wbtc migration (@todo update the rate and pool idx once it's finalized)
     {
         baseToken: {
             tokenSymbol: "SolvBTC",
@@ -993,29 +1128,13 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             tokenDeploymentName: "wBTC",
             isNativeToken: false,
         },
-        initialRate: 1,
+        initialRate: 0.9970830792, // (SolvBTC/wBTC) --> means 1 SolvBTC = 0.9970830792 wBTC
         poolIdx: 400,
     },
-
-    // RUNE
     {
         baseToken: {
-            tokenSymbol: "DOG",
-            tokenDeploymentName: "DOG",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "POWA",
-            tokenDeploymentName: "POWA",
-            isNativeToken: false,
-        },
-        initialRate: 8062.1837, // (DOG/POWA) --> means 1 DOG = 8062.1837 POWA
-        poolIdx: 420,
-    },
-    {
-        baseToken: {
-            tokenSymbol: "DOG",
-            tokenDeploymentName: "DOG",
+            tokenSymbol: "xSolvBTC",
+            tokenDeploymentName: "xSolvBTC",
             isNativeToken: false,
         },
         quoteToken: {
@@ -1023,29 +1142,13 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             tokenDeploymentName: "wBTC",
             isNativeToken: false,
         },
-        initialRate: 0.00000008248, // (DOG/wBTC) --> means 1 DOG = 0.00000008248 wBTC
-        poolIdx: 420,
+        initialRate: 0.9927695721, // (xSolvBTC/wBTC) --> means 1 xSolvBTC = 0.9927695721 wBTC
+        poolIdx: 400,
     },
-
     {
         baseToken: {
-            tokenSymbol: "PUPS",
-            tokenDeploymentName: "PUPS",
-            isNativeToken: false,
-        },
-        quoteToken: {
-            tokenSymbol: "POWA",
-            tokenDeploymentName: "POWA",
-            isNativeToken: false,
-        },
-        initialRate: 203105.5901, // (PUPS/POWA) --> means 1 PUPS = 203105.5901 POWA
-        poolIdx: 420,
-    },
-
-    {
-        baseToken: {
-            tokenSymbol: "PUPS",
-            tokenDeploymentName: "PUPS",
+            tokenSymbol: "UniBTC",
+            tokenDeploymentName: "UniBTC",
             isNativeToken: false,
         },
         quoteToken: {
@@ -1053,9 +1156,79 @@ export const bobMainnetPoolConfigs: ISdexPoolInfo[] = [
             tokenDeploymentName: "wBTC",
             isNativeToken: false,
         },
-        initialRate: 0.00000190189, // (PUPS/wBTC) --> means 1 PUPS = 0.00000190189 wBTC
-        poolIdx: 420,
+        initialRate: 0.9937595573, // (UniBTC/wBTC) --> means 1 UniBTC = 0.9937595573 wBTC
+        poolIdx: 400,
     },
+    {
+        baseToken: {
+            tokenSymbol: "tBTC",
+            tokenDeploymentName: "tBTC",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "wBTC",
+            tokenDeploymentName: "wBTC",
+            isNativeToken: false,
+        },
+        initialRate: 0.9962521987, // (tBTC/wBTC) --> means 1 tBTC = 0.9962521987 wBTC
+        poolIdx: 400,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "SOV",
+            tokenDeploymentName: "SOV",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "wBTC",
+            tokenDeploymentName: "wBTC",
+            isNativeToken: false,
+        },
+        initialRate: 0.000000863408554, // (SOV/wBTC) --> means 1 SOV = 0.000000863408554 wBTC
+        poolIdx: 410,
+    },
+    {
+        baseToken: {
+            tokenSymbol: "satUSD",
+            tokenDeploymentName: "satUSD",
+            isNativeToken: false,
+        },
+        quoteToken: {
+            tokenSymbol: "wBTC",
+            tokenDeploymentName: "wBTC",
+            isNativeToken: false,
+        },
+        initialRate: 0.000008807332962, // (satUSD/wBTC) --> means 1 satUSD = 0.000008807332962 wBTC
+        poolIdx: 400,
+    },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "PUPS",
+    //         tokenDeploymentName: "PUPS",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "wBTC",
+    //         tokenDeploymentName: "wBTC",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 0.000000220962625, // (PUPS/wBTC) --> means 1 PUPS = 0.000000220962625 wBTC
+    //     poolIdx: 420,
+    // },
+    // {
+    //     baseToken: {
+    //         tokenSymbol: "DOG",
+    //         tokenDeploymentName: "DOG",
+    //         isNativeToken: false,
+    //     },
+    //     quoteToken: {
+    //         tokenSymbol: "wBTC",
+    //         tokenDeploymentName: "wBTC",
+    //         isNativeToken: false,
+    //     },
+    //     initialRate: 0.000000030792239, // (DOG/wBTC) --> means 1 DOG = 0.000000030792239 wBTC
+    //     poolIdx: 420,
+    // },
 ]
 
 export const SDEX_POOL_CONFIGS = {
