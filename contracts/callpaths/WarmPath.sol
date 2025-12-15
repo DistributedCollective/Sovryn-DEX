@@ -11,7 +11,6 @@ import '../mixins/MarketSequencer.sol';
 import '../mixins/SettleLayer.sol';
 import '../mixins/PoolRegistry.sol';
 import '../mixins/MarketSequencer.sol';
-import '../mixins/ProtocolAccount.sol';
 import '../SdexEvents.sol';
 
 /* @title Warm path callpath sidecar.
@@ -31,7 +30,7 @@ import '../SdexEvents.sol';
  *         not state. As such it should never be called directly or externally, and should
  *         only be invoked with DELEGATECALL so that it operates on the contract state
  *         within the primary SdexSwap contract. */
-contract WarmPath is MarketSequencer, SettleLayer, ProtocolAccount {
+contract WarmPath is MarketSequencer, SettleLayer {
 
     using SafeCast for uint128;
     using TokenFlow for TokenFlow.PairSeq;
